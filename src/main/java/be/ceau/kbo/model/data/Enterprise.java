@@ -56,23 +56,18 @@ public class Enterprise {
 		this.startDate = builder.startDate;
 
 		Validator.isNotNull(builder.denominations);
-		Validator.isNotEmpty(builder.denominations);
 		this.denominations = builder.denominations;
 
 		Validator.isNotNull(builder.establishments);
-		Validator.isNotEmpty(builder.establishments);
 		this.establishments = Collections.unmodifiableSet(new HashSet<>(builder.establishments));
-		
+
 		Validator.isNotNull(builder.addresses);
-		Validator.isNotEmpty(builder.addresses);
 		this.addresses = Collections.unmodifiableSet(new HashSet<>(builder.addresses));
-		
+
 		Validator.isNotNull(builder.contacts);
-		Validator.isNotEmpty(builder.contacts);
 		this.contacts = Collections.unmodifiableSet(new HashSet<>(builder.contacts));
-		
+
 		Validator.isNotNull(builder.activities);
-		Validator.isNotEmpty(builder.activities);
 		this.activities = Collections.unmodifiableSet(new HashSet<>(builder.activities));
 
 	}
