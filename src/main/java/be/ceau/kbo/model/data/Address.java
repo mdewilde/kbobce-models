@@ -72,110 +72,172 @@ public class Address {
 	 */
 	private final LocalDate dateStrikingOff;
 
+	/**
+	 * @param typeOfAddress
+	 *            may not be {@code null}
+	 * @param countryNL
+	 *            may be {@code null}
+	 * @param countryFR
+	 *            may be {@code null}
+	 * @param zipcode
+	 *            may be {@code null}
+	 * @param municipalityNL
+	 *            may be {@code null}
+	 * @param municipalityFR
+	 *            may be {@code null}
+	 * @param streetNL
+	 *            may be {@code null}
+	 * @param streetFR
+	 *            may be {@code null}
+	 * @param houseNumber
+	 *            may be {@code null}
+	 * @param box
+	 *            may be {@code null}
+	 * @param extraAddressInfo
+	 *            may be {@code null}
+	 * @param dateStrikingOff
+	 *            may be {@code null}
+	 */
 	public Address(TypeOfAddress typeOfAddress, String countryNL, String countryFR, String zipcode,
 			String municipalityNL, String municipalityFR, String streetNL, String streetFR, String houseNumber,
 			String box, String extraAddressInfo, LocalDate dateStrikingOff) {
-		
+
 		Validator.isNotNull(typeOfAddress);
 		this.typeOfAddress = typeOfAddress;
-		
+
 		if (countryNL != null) {
 			Validator.isMaxLength(100, countryNL);
 		}
 		this.countryNL = countryNL != null ? countryNL : "";
-		
+
 		if (countryFR != null) {
 			Validator.isMaxLength(100, countryFR);
 		}
 		this.countryFR = countryFR != null ? countryFR : "";
-		
+
 		if (zipcode != null) {
 			Validator.isMaxLength(20, zipcode);
 		}
 		this.zipcode = zipcode != null ? zipcode : "";
-		
+
 		if (municipalityNL != null) {
 			Validator.isMaxLength(200, municipalityNL);
 		}
 		this.municipalityNL = municipalityNL != null ? municipalityNL : "";
-		
+
 		if (municipalityFR != null) {
 			Validator.isMaxLength(200, municipalityFR);
 		}
 		this.municipalityFR = municipalityFR != null ? municipalityFR : "";
-		
+
 		if (streetNL != null) {
 			Validator.isMaxLength(200, streetNL);
 		}
 		this.streetNL = streetNL != null ? streetNL : "";
-		
+
 		if (streetFR != null) {
 			Validator.isMaxLength(200, streetFR);
 		}
 		this.streetFR = streetFR != null ? streetFR : "";
-		
+
 		if (houseNumber != null) {
 			Validator.isMaxLength(22, houseNumber);
 		}
 		this.houseNumber = houseNumber != null ? houseNumber : "";
-		
+
 		if (box != null) {
 			Validator.isMaxLength(20, box);
 		}
 		this.box = box != null ? box : "";
-		
+
 		if (extraAddressInfo != null) {
 			Validator.isMaxLength(80, extraAddressInfo);
 		}
 		this.extraAddressInfo = extraAddressInfo != null ? extraAddressInfo : "";
-		
+
 		this.dateStrikingOff = dateStrikingOff;
 	}
 
+	/**
+	 * @return TypeOfAddress never {@code null}
+	 */
 	public TypeOfAddress getTypeOfAddress() {
 		return typeOfAddress;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getCountryNL() {
 		return countryNL;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getCountryFR() {
 		return countryFR;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getZipcode() {
 		return zipcode;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getMunicipalityNL() {
 		return municipalityNL;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getMunicipalityFR() {
 		return municipalityFR;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getStreetNL() {
 		return streetNL;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getStreetFR() {
 		return streetFR;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getHouseNumber() {
 		return houseNumber;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getBox() {
 		return box;
 	}
 
+	/**
+	 * @return String may be empty, never {@code null}
+	 */
 	public String getExtraAddressInfo() {
 		return extraAddressInfo;
 	}
 
+	/**
+	 * @return LocalDate may be {@code null}
+	 */
 	public LocalDate getDateStrikingOff() {
 		return dateStrikingOff;
 	}
@@ -243,5 +305,5 @@ public class Address {
 				+ ", streetNL=" + streetNL + ", streetFR=" + streetFR + ", houseNumber=" + houseNumber + ", box=" + box
 				+ ", extraAddressInfo=" + extraAddressInfo + ", dateStrikingOff=" + dateStrikingOff + "]";
 	}
-	
+
 }
