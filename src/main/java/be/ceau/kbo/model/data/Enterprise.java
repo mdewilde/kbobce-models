@@ -1,6 +1,7 @@
 package be.ceau.kbo.model.data;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -192,13 +193,28 @@ public class Enterprise {
 			return this;
 		}
 		
+		public Builder addDenominations(Collection<Denomination> denominations) {
+			this.denominations.addAll(denominations);
+			return this;
+		}
+
 		public Builder addEstablishment(Establishment establishment) {
 			this.establishments.add(establishment);
 			return this;
 		}
 		
+		public Builder addEstablishments(Collection<Establishment> establishments) {
+			this.establishments.addAll(establishments);
+			return this;
+		}
+
 		public Builder addAddress(Address address) {
 			this.addresses.add(address);
+			return this;
+		}
+
+		public Builder addAddresses(Collection<Address> addresses) {
+			this.addresses.addAll(addresses);
 			return this;
 		}
 
@@ -207,8 +223,18 @@ public class Enterprise {
 			return this;
 		}
 
+		public Builder addContacts(Collection<Contact> contacts) {
+			this.contacts.addAll(contacts);
+			return this;
+		}
+
 		public Builder addActivity(Activity activity) {
 			this.activities.add(activity);
+			return this;
+		}
+
+		public Builder addActivities(Collection<Activity> activities) {
+			this.activities.addAll(activities);
 			return this;
 		}
 
