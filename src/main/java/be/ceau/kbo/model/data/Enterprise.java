@@ -1,3 +1,18 @@
+/*
+	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+		http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
 package be.ceau.kbo.model.data;
 
 import java.time.LocalDate;
@@ -6,7 +21,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import be.ceau.kbo.model.core.EntityNumber;
+import be.ceau.kbo.model.core.EnterpriseNumber;
 import be.ceau.kbo.model.core.JuridicalForm;
 import be.ceau.kbo.model.core.JuridicalSituation;
 import be.ceau.kbo.model.core.Status;
@@ -18,16 +33,26 @@ import be.ceau.kbo.model.util.Validator;
  */
 public class Enterprise {
 
-	private final EntityNumber entityNumber;
+	private final EnterpriseNumber enterpriseNumber;
+
 	private final Status status;
+	
 	private final JuridicalSituation juridicalSituation;
+	
 	private final TypeOfEnterprise typeOfEnterprise;
+	
 	private final JuridicalForm juridicalForm;
+	
 	private final LocalDate startDate;
+	
 	private final Set<Denomination> denominations;
+	
 	private final Set<Establishment> establishments;
+	
 	private final Set<Address> addresses;
+	
 	private final Set<Contact> contacts;
+	
 	private final Set<Activity> activities;
 
 	public static Builder builder() {
@@ -38,8 +63,8 @@ public class Enterprise {
 		
 		Validator.isNotNull(builder);
 		
-		Validator.isNotNull(builder.entityNumber);
-		this.entityNumber = builder.entityNumber;
+		Validator.isNotNull(builder.enterpriseNumber);
+		this.enterpriseNumber = builder.enterpriseNumber;
 
 		Validator.isNotNull(builder.status);
 		this.status = builder.status;
@@ -73,8 +98,8 @@ public class Enterprise {
 
 	}
 
-	public EntityNumber getEntityNumber() {
-		return entityNumber;
+	public EnterpriseNumber getEnterpriseNumber() {
+		return enterpriseNumber;
 	}
 
 	public Status getStatus() {
@@ -119,7 +144,7 @@ public class Enterprise {
 
 	@Override
 	public int hashCode() {
-		return 31 * entityNumber.hashCode();
+		return 31 * enterpriseNumber.hashCode();
 	}
 
 	@Override
@@ -131,12 +156,12 @@ public class Enterprise {
 		if (getClass() != obj.getClass())
 			return false;
 		Enterprise other = (Enterprise) obj;
-		return entityNumber.equals(other.entityNumber);
+		return enterpriseNumber.equals(other.enterpriseNumber);
 	}
 	
 	@Override
 	public String toString() {
-		return "Enterprise [entityNumber=" + entityNumber + ", status=" + status + ", juridicalSituation="
+		return "Enterprise [enterpriseNumber=" + enterpriseNumber + ", status=" + status + ", juridicalSituation="
 				+ juridicalSituation + ", typeOfEnterprise=" + typeOfEnterprise + ", juridicalForm=" + juridicalForm
 				+ ", startDate=" + startDate + ", denominations=" + denominations + ", establishments=" + establishments
 				+ ", addresses=" + addresses + ", contacts=" + contacts + ", activities=" + activities + "]";
@@ -144,7 +169,7 @@ public class Enterprise {
 
 	public static class Builder {
 		
-		private EntityNumber entityNumber;
+		private EnterpriseNumber enterpriseNumber;
 		private Status status;
 		private JuridicalSituation juridicalSituation;
 		private TypeOfEnterprise typeOfEnterprise;
@@ -158,8 +183,8 @@ public class Enterprise {
 		
 		private Builder() {}
 		
-		public Builder withEntityNumber(EntityNumber entityNumber) {
-			this.entityNumber = entityNumber;
+		public Builder withEnterpriseNumber(EnterpriseNumber enterpriseNumber) {
+			this.enterpriseNumber = enterpriseNumber;
 			return this;
 		}
 		
@@ -244,7 +269,7 @@ public class Enterprise {
 
 		@Override
 		public String toString() {
-			return "Builder [entityNumber=" + entityNumber + ", status=" + status + ", juridicalSituation="
+			return "Builder [enterpriseNumber=" + enterpriseNumber + ", status=" + status + ", juridicalSituation="
 					+ juridicalSituation + ", typeOfEnterprise=" + typeOfEnterprise + ", juridicalForm=" + juridicalForm
 					+ ", startDate=" + startDate + ", denominations=" + denominations + ", establishments="
 					+ establishments + ", addresses=" + addresses + ", contacts=" + contacts + ", activities="

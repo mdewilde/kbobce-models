@@ -1,3 +1,18 @@
+/*
+	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+		http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
 package be.ceau.kbo.model.core;
 
 import java.util.regex.Pattern;
@@ -27,40 +42,40 @@ Het ondernemingsnummer bestaat uit 10 cijfers en begint met een 0. Het formaat i
  * </pre>
  * 
  */
-public class EntityNumber {
+public class EnterpriseNumber {
 
 	private static final Pattern PATTERN = Pattern.compile("0[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}");
 
-	private final String entityNumber;
+	private final String enterpriseNumber;
 
 	/**
-	 * Construct a new {@link EntityNumber}.<br>
+	 * Construct a new {@link EnterpriseNumber}.<br>
 	 * 
-	 * @param entityNumber
+	 * @param enterpriseNumber
 	 *            a valid, correctly formatted entity number.
 	 * @throws IllegalArgumentException
 	 *             if argument not valid. Avoid this exception by passing only
 	 *             input validated with static {@link #isValid} method, or by
-	 *             using the static factory to create a new EntityNumber.
+	 *             using the static factory to create a new EnterpriseNumber.
 	 */
-	public EntityNumber(String entityNumber) {
-		if (!EntityNumber.isValid(entityNumber)) {
-			throw new IllegalArgumentException("argument is not a valid EntityNumber");
+	public EnterpriseNumber(String enterpriseNumber) {
+		if (!EnterpriseNumber.isValid(enterpriseNumber)) {
+			throw new IllegalArgumentException("argument is not a valid EnterpriseNumber");
 		}
-		this.entityNumber = entityNumber;
+		this.enterpriseNumber = enterpriseNumber;
 	}
 
-	public String getEntityNumber() {
-		return entityNumber;
+	public String getEnterpriseNumber() {
+		return enterpriseNumber;
 	}
 
-	public static EntityNumber parse(String entityNumber) {
-		if (isValid(entityNumber)) {
-			return new EntityNumber(entityNumber);
+	public static EnterpriseNumber parse(String enterpriseNumber) {
+		if (isValid(enterpriseNumber)) {
+			return new EnterpriseNumber(enterpriseNumber);
 		}
 		StringBuilder sb = new StringBuilder();
 		int index = 0;
-		for (char ch : entityNumber.toCharArray()) {
+		for (char ch : enterpriseNumber.toCharArray()) {
 			if (Character.isDigit(ch)) {
 				if (index < 10) {
 					sb.append(ch);
@@ -69,29 +84,29 @@ public class EntityNumber {
 				}
 			}
 		}
-		if (isValid(entityNumber)) {
-			return new EntityNumber(entityNumber);
+		if (isValid(enterpriseNumber)) {
+			return new EnterpriseNumber(enterpriseNumber);
 		}
 		return null;
 	}
 
 	/**
-	 * Validate the given string as an EntityNumber
+	 * Validate the given string as an EnterpriseNumber
 	 * 
-	 * @param entityNumber
+	 * @param enterpriseNumber
 	 * @return true if the given argument is a valid, correctly formatted
-	 *         EntityNumber
+	 *         EnterpriseNumber
 	 */
-	public static boolean isValid(String entityNumber) {
-		if (entityNumber == null) {
+	public static boolean isValid(String enterpriseNumber) {
+		if (enterpriseNumber == null) {
 			return false;
 		}
-		return PATTERN.matcher(entityNumber).matches();
+		return PATTERN.matcher(enterpriseNumber).matches();
 	}
 
 	@Override
 	public int hashCode() {
-		return 31 * entityNumber.hashCode();
+		return 31 * enterpriseNumber.hashCode();
 	}
 
 	@Override
@@ -102,13 +117,13 @@ public class EntityNumber {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EntityNumber other = (EntityNumber) obj;
-		return entityNumber.equals(other.entityNumber);
+		EnterpriseNumber other = (EnterpriseNumber) obj;
+		return enterpriseNumber.equals(other.enterpriseNumber);
 	}
 
 	@Override
 	public String toString() {
-		return "EntityNumber [entityNumber=" + entityNumber + "]";
+		return "EnterpriseNumber [enterpriseNumber=" + enterpriseNumber + "]";
 	}
 
 }

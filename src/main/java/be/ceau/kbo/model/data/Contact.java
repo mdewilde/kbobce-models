@@ -1,3 +1,18 @@
+/*
+	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+	
+		http://www.apache.org/licenses/LICENSE-2.0
+	
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+*/
 package be.ceau.kbo.model.data;
 
 import be.ceau.kbo.model.core.ContactType;
@@ -5,16 +20,27 @@ import be.ceau.kbo.model.core.EntityContact;
 import be.ceau.kbo.model.util.Validator;
 
 /**
- * Het bestand contact.csv bevat 1 lijn per contact-gegeven van een onderneming
- * of vestigingseenheid. Per onderneming of vestigingseenheid kunnen meerdere
- * contact-gegevens voorkomen (bijvoorbeeld 1 telefoonnummer en 1 web adres).
+ * Model definition for contact data of an {@code Enterprise}
  */
 public class Contact {
 
 	private final EntityContact entityContact;
+	
 	private final ContactType contactType;
+	
 	private final String value;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param entityContact
+	 *            not null {@code EntityContact}
+	 * @param contactType
+	 *            not null {@code ContactType}
+	 * @param value
+	 *            not blank {@code String}, no more than 254 characters in
+	 *            length
+	 */
 	public Contact(EntityContact entityContact, ContactType contactType, String value) {
 		Validator.isNotNull(entityContact, contactType);
 		Validator.isNotBlank(value);
@@ -24,14 +50,23 @@ public class Contact {
 		this.value = value;
 	}
 
+	/**
+	 * @return the type of the establishment of this contact data, never null
+	 */
 	public EntityContact getEntityContact() {
 		return entityContact;
 	}
 
+	/**
+	 * @return the type of this contact data, never null
+	 */
 	public ContactType getContactType() {
 		return contactType;
 	}
 
+	/**
+	 * @return the actual contact information, never blank, never more than 254 characters
+	 */
 	public String getValue() {
 		return value;
 	}
