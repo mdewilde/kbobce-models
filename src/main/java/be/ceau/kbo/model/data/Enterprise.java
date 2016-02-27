@@ -183,6 +183,10 @@ public class Enterprise {
 		
 		private Builder() {}
 		
+		public EnterpriseNumber getEnterpriseNumber() {
+			return this.enterpriseNumber;
+		}
+
 		public Builder withEnterpriseNumber(EnterpriseNumber enterpriseNumber) {
 			this.enterpriseNumber = enterpriseNumber;
 			return this;
