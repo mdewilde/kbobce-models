@@ -1,9 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>be.ceau</groupId>
 	<artifactId>kbo_bce_models</artifactId>
 	<version>0.3.2</version>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.7.16</slf4j.version>
@@ -41,4 +43,6 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 	</dependencies>
+	<name>KBO/BCE Models</name>
+	<description>Model library for adding data from the Belgian Kruispuntbank van ondernemingen (KBO) / Banque-Carrefour des Entreprises (BCE).</description>
 </project>
