@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>be.ceau</groupId>
-	<artifactId>kbo_open_data_models</artifactId>
-	<version>0.3.1</version>
+	<artifactId>kbo_bce_models</artifactId>
+	<version>0.3.2</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.7.16</slf4j.version>
