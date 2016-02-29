@@ -74,16 +74,20 @@ public class EnterpriseNumber {
 			return new EnterpriseNumber(enterpriseNumber);
 		}
 		StringBuilder sb = new StringBuilder();
-		int index = 0;
-		for (char ch : enterpriseNumber.toCharArray()) {
-			if (Character.isDigit(ch)) {
-				if (index < 10) {
-					sb.append(ch);
+		for (int i = 0; i < enterpriseNumber.length(); i++) {
+			if (Character.isDigit(enterpriseNumber.charAt(i))) {
+				if (sb.length() < 10) {
+					sb.append(enterpriseNumber.charAt(i));
 				} else {
 					return null;
 				}
 			}
 		}
+		if (sb.length() < 10) {
+			return null;
+		}
+		sb.insert(4, '.');
+		sb.insert(8, '.');
 		if (isValid(enterpriseNumber)) {
 			return new EnterpriseNumber(enterpriseNumber);
 		}

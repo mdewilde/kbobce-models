@@ -44,6 +44,14 @@ public class EstablishmentNumber {
 		}
 		return FORMAT.matcher(establishmentNumber).matches();
 	}
+	
+	public static EstablishmentNumber parse(String establishmentNumber) {
+		if (isValid(establishmentNumber)) {
+			return new EstablishmentNumber(establishmentNumber);
+		} else {
+			return null;
+		}
+	}
 
 	public String getValue() {
 		return value;
