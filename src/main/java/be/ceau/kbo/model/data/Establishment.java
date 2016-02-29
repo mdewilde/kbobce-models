@@ -163,6 +163,10 @@ public class Establishment {
 			this.establishmentNumber = establishmentNumber;
 		}
 
+		public EstablishmentNumber getEstablishmentNumber() {
+			return this.establishmentNumber;
+		}
+		
 		public Builder addDenomination(Denomination denomination) {
 			this.denominations.add(denomination);
 			return this;
