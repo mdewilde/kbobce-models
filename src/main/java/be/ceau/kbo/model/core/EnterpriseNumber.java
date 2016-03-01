@@ -88,6 +88,7 @@ public class EnterpriseNumber {
 		}
 		sb.insert(4, '.');
 		sb.insert(8, '.');
+		enterpriseNumber = sb.toString();
 		if (isValid(enterpriseNumber)) {
 			return new EnterpriseNumber(enterpriseNumber);
 		}
