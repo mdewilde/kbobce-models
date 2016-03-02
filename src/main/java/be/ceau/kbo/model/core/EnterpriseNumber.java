@@ -46,27 +46,27 @@ public class EnterpriseNumber {
 
 	private static final Pattern PATTERN = Pattern.compile("0[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}");
 
-	private final String enterpriseNumber;
+	private final String value;
 
 	/**
 	 * Construct a new {@link EnterpriseNumber}.<br>
 	 * 
-	 * @param enterpriseNumber
+	 * @param value
 	 *            a valid, correctly formatted entity number.
 	 * @throws IllegalArgumentException
 	 *             if argument not valid. Avoid this exception by passing only
 	 *             input validated with static {@link #isValid} method, or by
 	 *             using the static factory to create a new EnterpriseNumber.
 	 */
-	public EnterpriseNumber(String enterpriseNumber) {
-		if (!EnterpriseNumber.isValid(enterpriseNumber)) {
+	public EnterpriseNumber(String value) {
+		if (!EnterpriseNumber.isValid(value)) {
 			throw new IllegalArgumentException("argument is not a valid EnterpriseNumber");
 		}
-		this.enterpriseNumber = enterpriseNumber;
+		this.value = value;
 	}
 
-	public String getEnterpriseNumber() {
-		return enterpriseNumber;
+	public String getValue() {
+		return value;
 	}
 
 	public static EnterpriseNumber parse(String enterpriseNumber) {
@@ -111,7 +111,7 @@ public class EnterpriseNumber {
 
 	@Override
 	public int hashCode() {
-		return 31 * enterpriseNumber.hashCode();
+		return 31 * value.hashCode();
 	}
 
 	@Override
@@ -123,12 +123,12 @@ public class EnterpriseNumber {
 		if (getClass() != obj.getClass())
 			return false;
 		EnterpriseNumber other = (EnterpriseNumber) obj;
-		return enterpriseNumber.equals(other.enterpriseNumber);
+		return value.equals(other.value);
 	}
 
 	@Override
 	public String toString() {
-		return "EnterpriseNumber [enterpriseNumber=" + enterpriseNumber + "]";
+		return "EnterpriseNumber [enterpriseNumber=" + value + "]";
 	}
 
 }
