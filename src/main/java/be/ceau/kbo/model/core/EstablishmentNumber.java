@@ -26,6 +26,16 @@ public class EstablishmentNumber {
 
 	private final String value;
 
+	/**
+	 * Construct a new {@link EstablishmentNumber}.<br>
+	 * 
+	 * @param value
+	 *            a valid, correctly formatted establishment number.
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with the static {@link #isValid} method, or by
+	 *             using the static factory to create a new EstablishmentNumber.
+	 */
 	public EstablishmentNumber(String value) {
 		if (!EstablishmentNumber.isValid(value)) {
 			throw new IllegalArgumentException("argument is not a valid EstablishmentNumber");

@@ -52,7 +52,7 @@ public class EnterpriseNumber {
 	 * Construct a new {@link EnterpriseNumber}.<br>
 	 * 
 	 * @param value
-	 *            a valid, correctly formatted entity number.
+	 *            a valid, correctly formatted enterprise number.
 	 * @throws IllegalArgumentException
 	 *             if argument not valid. Avoid this exception by passing only
 	 *             input validated with static {@link #isValid} method, or by

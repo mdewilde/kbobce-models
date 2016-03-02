@@ -42,17 +42,19 @@ public class SocialSecurityNumber {
 
 	private final String value;
 
+	/**
+	 * Construct a new {@link SocialSecurityNumber}.<br>
+	 * 
+	 * @param value
+	 *            a valid, correctly formatted social security number.
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with the static {@link #isValid} method, or by
+	 *             using the static factory to create a new SocialSecurityNumber.
+	 */
 	public SocialSecurityNumber(String value) {
-		if (value == null) {
-			throw new IllegalArgumentException("value argument can not be null");
-		}
-		if (value.length() != 12) {
-			throw new IllegalArgumentException("value argument must be 12 characters in length");
-		}
-		for (int i = 0; i < value.length(); i++) {
-			if (value.charAt(i) < 0 || value.charAt(i) > 9) {
-				throw new IllegalArgumentException("number argument must be digits only");
-			}
+		if (!isValid(value)) {
+			throw new IllegalArgumentException("value is not a valid SocialSecurityNumber");
 		}
 		this.value = value;
 	}
@@ -90,8 +92,9 @@ public class SocialSecurityNumber {
 				sb.append(socialSecurityNumber.charAt(i));
 			}
 		}
-		if (sb.length() == 9 || sb.length() == 12) {
-			return new SocialSecurityNumber(sb.toString());
+		socialSecurityNumber = sb.toString();
+		if (isValid(socialSecurityNumber)) {
+			return new SocialSecurityNumber(socialSecurityNumber);
 		}
 		return null;
 	}
