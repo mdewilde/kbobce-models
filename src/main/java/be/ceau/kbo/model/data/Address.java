@@ -307,6 +307,8 @@ public class Address {
 			return false;
 		} else if (dateStrikingOff == null && other.dateStrikingOff != null) {
 			return false;
+		} else if (dateStrikingOff == null && other.dateStrikingOff == null) {
+			return true;
 		}
 		return dateStrikingOff.equals(other.dateStrikingOff);
 	}
