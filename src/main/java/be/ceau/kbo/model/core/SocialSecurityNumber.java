@@ -83,6 +83,9 @@ public class SocialSecurityNumber {
 	}
 
 	public static SocialSecurityNumber parse(String socialSecurityNumber) {
+		if (socialSecurityNumber == null) {
+			return null;
+		}
 		if (isValid(socialSecurityNumber)) {
 			return new SocialSecurityNumber(socialSecurityNumber);
 		}

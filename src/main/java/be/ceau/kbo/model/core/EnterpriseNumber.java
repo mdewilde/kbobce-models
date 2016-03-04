@@ -70,6 +70,9 @@ public class EnterpriseNumber {
 	}
 
 	public static EnterpriseNumber parse(String enterpriseNumber) {
+		if (enterpriseNumber == null) {
+			return null;
+		}
 		if (isValid(enterpriseNumber)) {
 			return new EnterpriseNumber(enterpriseNumber);
 		}

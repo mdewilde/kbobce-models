@@ -56,6 +56,9 @@ public class EstablishmentNumber {
 	}
 	
 	public static EstablishmentNumber parse(String establishmentNumber) {
+		if (establishmentNumber == null) {
+			return null;
+		}
 		if (isValid(establishmentNumber)) {
 			return new EstablishmentNumber(establishmentNumber);
 		} else {
