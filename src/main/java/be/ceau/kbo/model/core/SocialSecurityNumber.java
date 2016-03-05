@@ -123,4 +123,9 @@ public class SocialSecurityNumber {
 		return value.equals(other.value);
 	}
 
+	@Override
+	public String toString() {
+		return "SocialSecurityNumber [value=" + value + "]";
+	}
+
 }
