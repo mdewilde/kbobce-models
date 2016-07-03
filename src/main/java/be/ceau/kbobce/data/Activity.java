@@ -13,12 +13,12 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.data;
+package be.ceau.kbobce.data;
 
-import be.ceau.kbo.model.core.ActivityGroup;
-import be.ceau.kbo.model.core.Classification;
-import be.ceau.kbo.model.core.Nace;
-import be.ceau.kbo.model.util.Validator;
+import be.ceau.kbobce.core.ActivityGroup;
+import be.ceau.kbobce.core.Classification;
+import be.ceau.kbobce.core.Nace;
+import be.ceau.kbobce.util.Validator;
 
 /**
  * Model definition for an activity of an {@code Enterprise}

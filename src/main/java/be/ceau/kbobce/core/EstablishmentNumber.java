@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.core;
+package be.ceau.kbobce.core;
 
 import java.util.regex.Pattern;
 
@@ -33,8 +33,9 @@ public class EstablishmentNumber {
 	 *            a valid, correctly formatted establishment number.
 	 * @throws IllegalArgumentException
 	 *             if argument not valid. Avoid this exception by passing only
-	 *             input validated with the static {@link #isValid} method, or by
-	 *             using the static factory to create a new EstablishmentNumber.
+	 *             input validated with the static {@link #isValid} method, or
+	 *             by using the static factory to create a new
+	 *             EstablishmentNumber.
 	 */
 	public EstablishmentNumber(String value) {
 		if (!EstablishmentNumber.isValid(value)) {
@@ -44,9 +45,13 @@ public class EstablishmentNumber {
 	}
 
 	/**
-	 * Validate the given string as an EstablishmentNumber
+	 * Validate the given string as a possible {@code EstablishmentNumber}
+	 * 
 	 * @param establishmentNumber
-	 * @return true if the given argument is a valid, correctly formatted establishment number
+	 *            {@code String} to validate as a possible
+	 *            {@code EstablishmentNumber}
+	 * @return true if the given argument is a valid, correctly formatted
+	 *         establishment number
 	 */
 	public static boolean isValid(String establishmentNumber) {
 		if (establishmentNumber == null) {
@@ -54,7 +59,7 @@ public class EstablishmentNumber {
 		}
 		return FORMAT.matcher(establishmentNumber).matches();
 	}
-	
+
 	public static EstablishmentNumber parse(String establishmentNumber) {
 		if (establishmentNumber == null) {
 			return null;
@@ -91,5 +96,5 @@ public class EstablishmentNumber {
 	public String toString() {
 		return "EstablishmentNumber [value=" + value + "]";
 	}
-	
+
 }

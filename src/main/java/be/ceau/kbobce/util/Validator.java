@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.util;
+package be.ceau.kbobce.util;
 
 import java.util.Collection;
 
@@ -27,6 +27,7 @@ public class Validator {
 	 * Validates that the input string is not {@code blank}
 	 * 
 	 * @param string
+	 *            {@code String} to validate as not {@code null}
 	 * @throws IllegalArgumentException
 	 *             if input string is blank
 	 */
@@ -45,6 +46,7 @@ public class Validator {
 	 * Validates that none of the given arguments are {@code null}
 	 * 
 	 * @param objects
+	 *            objects to validate as not {@code null}
 	 * @throws IllegalArgumentException
 	 *             if at least one argument is null
 	 */
@@ -110,6 +112,7 @@ public class Validator {
 	 * Validates that the given collection is not empty
 	 * 
 	 * @param collection
+	 *            collection to validate as not empty
 	 * @throws IllegalArgumentException
 	 *             if the given collection is empty (or {@code null})
 	 */

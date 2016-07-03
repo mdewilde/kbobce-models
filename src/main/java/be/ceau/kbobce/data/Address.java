@@ -13,12 +13,12 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.data;
+package be.ceau.kbobce.data;
 
 import java.time.LocalDate;
 
-import be.ceau.kbo.model.core.TypeOfAddress;
-import be.ceau.kbo.model.util.Validator;
+import be.ceau.kbobce.core.TypeOfAddress;
+import be.ceau.kbobce.util.Validator;
 
 /**
  * Model definition for an address of an {@code Enterprise}

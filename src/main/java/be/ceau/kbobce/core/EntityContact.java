@@ -13,11 +13,11 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.core;
+package be.ceau.kbobce.core;
 
 import java.util.Map;
 
-import be.ceau.kbo.model.util.Validator;
+import be.ceau.kbobce.util.Validator;
 
 /**
  * Geeft aan voor welk type entiteit dit een contactgegeven is: onderneming,

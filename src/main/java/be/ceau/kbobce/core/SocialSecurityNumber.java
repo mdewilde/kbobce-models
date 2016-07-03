@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.core;
+package be.ceau.kbobce.core;
 
 /**
  * 
@@ -64,6 +64,9 @@ public class SocialSecurityNumber {
 	 * that either 12 or 9 numbers are valid
 	 * 
 	 * @param socialSecurityNumber
+	 *            a {@code String} to validate as a possible
+	 *            {@code SocialSecurityNumber}
+	 * 
 	 * @return true if the given argument is a valid, correctly formatted social
 	 *         security number
 	 */

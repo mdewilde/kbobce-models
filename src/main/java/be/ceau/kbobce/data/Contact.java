@@ -13,11 +13,11 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.data;
+package be.ceau.kbobce.data;
 
-import be.ceau.kbo.model.core.ContactType;
-import be.ceau.kbo.model.core.EntityContact;
-import be.ceau.kbo.model.util.Validator;
+import be.ceau.kbobce.core.ContactType;
+import be.ceau.kbobce.core.EntityContact;
+import be.ceau.kbobce.util.Validator;
 
 /**
  * Model definition for contact data of an {@code Enterprise}

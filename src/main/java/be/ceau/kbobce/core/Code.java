@@ -13,13 +13,13 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.core;
+package be.ceau.kbobce.core;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import be.ceau.kbo.model.util.Validator;
+import be.ceau.kbobce.util.Validator;
 
 /**
  * Class representing a code along with translations in zero or more languages.

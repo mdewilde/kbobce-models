@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.data;
+package be.ceau.kbobce.data;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -21,12 +21,12 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import be.ceau.kbo.model.core.EnterpriseNumber;
-import be.ceau.kbo.model.core.JuridicalForm;
-import be.ceau.kbo.model.core.JuridicalSituation;
-import be.ceau.kbo.model.core.Status;
-import be.ceau.kbo.model.core.TypeOfEnterprise;
-import be.ceau.kbo.model.util.Validator;
+import be.ceau.kbobce.core.EnterpriseNumber;
+import be.ceau.kbobce.core.JuridicalForm;
+import be.ceau.kbobce.core.JuridicalSituation;
+import be.ceau.kbobce.core.Status;
+import be.ceau.kbobce.core.TypeOfEnterprise;
+import be.ceau.kbobce.util.Validator;
 
 /**
  * Main model for this library.

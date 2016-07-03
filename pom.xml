@@ -44,7 +44,6 @@
 		<maven>3.0</maven>
 	</prerequisites>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

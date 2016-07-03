@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbo.model.data;
+package be.ceau.kbobce.data;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -21,8 +21,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import be.ceau.kbo.model.core.EstablishmentNumber;
-import be.ceau.kbo.model.util.Validator;
+import be.ceau.kbobce.core.EstablishmentNumber;
+import be.ceau.kbobce.util.Validator;
 
 /**
  * Model definition for a unit of establishment of an {@code Enterprise}
