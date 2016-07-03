@@ -49,7 +49,7 @@ public class EnterpriseNumber {
 	private final String value;
 
 	/**
-	 * Construct a new {@link EnterpriseNumber}.<br>
+	 * Construct a new {@link EnterpriseNumber}.
 	 * 
 	 * @param value
 	 *            a valid, correctly formatted enterprise number.

@@ -18,12 +18,13 @@ package be.ceau.kbo.model.util;
 import java.util.Collection;
 
 /**
- * Utility class for validating preconditions and postconditions in this class.
+ * Utility class for validating preconditions and postconditions in the
+ * {@code kbocbe} library.
  */
 public class Validator {
 
 	/**
-	 * Validates that the input string is not blank.
+	 * Validates that the input string is not {@code blank}
 	 * 
 	 * @param string
 	 * @throws IllegalArgumentException
@@ -41,7 +42,7 @@ public class Validator {
 	}
 
 	/**
-	 * Validates that none of the given arguments are null
+	 * Validates that none of the given arguments are {@code null}
 	 * 
 	 * @param objects
 	 * @throws IllegalArgumentException
@@ -66,12 +67,12 @@ public class Validator {
 	 * @param maxLength
 	 *            a non-negative int
 	 * @param string
-	 *            a non-null String
+	 *            a non-{@code null} {@code String}
 	 * @throws NullPointerException
-	 *             if string is null
+	 *             if {@code string} is {@code null}
 	 * @throws IllegalArgumentException
-	 *             if maxLength is less than 0 or if string has more than
-	 *             maxLength characters
+	 *             if {@code maxLength} is less than 0 or if {@code string} has
+	 *             more than {@code maxLength} characters
 	 */
 	public static void isMaxLength(int maxLength, String string) {
 		if (maxLength < 0) {
@@ -86,22 +87,22 @@ public class Validator {
 	 * Validates that the given string has exactly the given number of
 	 * characters
 	 * 
-	 * @param maxLength
-	 *            a non-negative int
+	 * @param length
+	 *            a non-negative {@code int}
 	 * @param string
-	 *            a non-null String
+	 *            a non-{@code null} {@code String}
 	 * @throws NullPointerException
-	 *             if string is null
+	 *             if {@code string} is {@code null}
 	 * @throws IllegalArgumentException
-	 *             if maxLength is less than 0 or if string has more than
-	 *             maxLength characters
+	 *             if {@code length} is less than 0 or if {@code string} has
+	 *             more than {@code length} characters
 	 */
-	public static void isLength(int maxLength, String string) {
-		if (maxLength < 0) {
-			throw new IllegalArgumentException("maxLength argument must a non-negative int");
+	public static void isLength(int length, String string) {
+		if (length < 0) {
+			throw new IllegalArgumentException("length argument must a non-negative int");
 		}
-		if (string.length() != maxLength) {
-			throw new IllegalArgumentException(string + " does not have exactly " + maxLength + " characters");
+		if (string.length() != length) {
+			throw new IllegalArgumentException(string + " does not have exactly " + length + " characters");
 		}
 	}
 
@@ -110,15 +111,12 @@ public class Validator {
 	 * 
 	 * @param collection
 	 * @throws IllegalArgumentException
-	 *             if the given collection is empty (or null)
+	 *             if the given collection is empty (or {@code null})
 	 */
 	public static void isNotEmpty(Collection<?> collection) {
-		if (collection != null) {
-			if (!collection.isEmpty()) {
-				return;
-			}
+		if (collection == null || collection.isEmpty()) {
+			throw new IllegalArgumentException("collection is null or empty");
 		}
-		throw new IllegalArgumentException("collection is null or empty");
 	}
 
 }

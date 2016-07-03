@@ -20,7 +20,14 @@ import java.util.Map;
 import be.ceau.kbo.model.util.Validator;
 
 /**
- * Geeft het type contactgegeven aan: telefoonnummer, e-mail of web adres.
+ * <p>
+ * Indicates the type of contact data:
+ * <ul>
+ * <li>phone
+ * <li>e-mail
+ * <li>web adress
+ * </ul>
+ * </p>
  */
 public class ContactType extends Code {
 
