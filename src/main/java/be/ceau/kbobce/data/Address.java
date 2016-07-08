@@ -220,8 +220,8 @@ public class Address {
 	}
 
 	/**
-	 * Extra information about the address, for example “City Atrium” or “North
-	 * Gate II & III”
+	 * Extra information about the address, for example &quot;City Atrium&quot;
+	 * or &quot;North Gate II & III&quot;
 	 * 
 	 * @return String may be empty, never {@code null}
 	 */
@@ -298,32 +298,8 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return new StringBuilder()	.append("Address [typeOfAddress=")
-									.append(typeOfAddress)
-									.append(", countryNL=")
-									.append(countryNL)
-									.append(", countryFR=")
-									.append(countryFR)
-									.append(", zipcode=")
-									.append(zipcode)
-									.append(", municipalityNL=")
-									.append(municipalityNL)
-									.append(", municipalityFR=")
-									.append(municipalityFR)
-									.append(", streetNL=")
-									.append(streetNL)
-									.append(", streetFR=")
-									.append(streetFR)
-									.append(", houseNumber=")
-									.append(houseNumber)
-									.append(", box=")
-									.append(box)
-									.append(", extraAddressInfo=")
-									.append(extraAddressInfo)
-									.append(", dateStrikingOff=")
-									.append(dateStrikingOff)
-									.append("]")
-									.toString();
+		return new StringBuilder().append("Address [typeOfAddress=").append(typeOfAddress).append(", countryNL=").append(countryNL).append(", countryFR=").append(countryFR).append(", zipcode=").append(zipcode).append(", municipalityNL=").append(municipalityNL).append(", municipalityFR=").append(municipalityFR).append(", streetNL=").append(streetNL).append(", streetFR=").append(streetFR).append(", houseNumber=").append(houseNumber).append(", box=").append(box).append(", extraAddressInfo=").append(extraAddressInfo)
+				.append(", dateStrikingOff=").append(dateStrikingOff).append("]").toString();
 	}
 
 }
