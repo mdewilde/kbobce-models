@@ -16,18 +16,13 @@ To download the _Kruispuntbank_'s open data, go to [Kruispuntbank](https://kbopu
 Include this project directly from Maven Central
 ```XML
 <groupId>be.ceau</groupId>
-<artifactId>kbobce</artifactId>
-<version>0.1</version>
+<artifactId>kbobce-models</artifactId>
+<version>${kbobce-models-version}</version>
 ```
+![Current version](https://maven-badges.herokuapp.com/maven-central/be.ceau/kbobce-models/badge.svg)
 
 ###	Source code
-Source code is available on [GitHub](https://github.com/mdewilde/kbobce).
-
-### Javadoc
-Browse this project's [Javadoc](https://www.ceau.be/kbobce/apidocs/index.html).
-
-### Download
-Download this project
+Source code is available on [GitHub](https://github.com/mdewilde/kbobce-models).
 
 ### GnuPG public key
 Verify signature files with my [GnuPG public key](https://www.ceau.be/pubkey.gpg).

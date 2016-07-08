@@ -20,7 +20,7 @@ import be.ceau.kbobce.core.EntityContact;
 import be.ceau.kbobce.util.Validator;
 
 /**
- * Model definition for contact data of an {@code Enterprise}
+ * Contact data of an {@code Enterprise}
  */
 public class Contact {
 

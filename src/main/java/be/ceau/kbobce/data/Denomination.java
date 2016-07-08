@@ -20,7 +20,7 @@ import be.ceau.kbobce.core.TypeOfDenomination;
 import be.ceau.kbobce.util.Validator;
 
 /**
- * Model definition for a name of an {@code Enterprise}.
+ * A name of an {@code Enterprise}.
  */
 public class Denomination {
 

@@ -25,7 +25,7 @@ import be.ceau.kbobce.core.EstablishmentNumber;
 import be.ceau.kbobce.util.Validator;
 
 /**
- * Model definition for a unit of establishment of an {@code Enterprise}
+ * A unit of establishment of an {@code Enterprise}
  */
 public class Establishment {
 

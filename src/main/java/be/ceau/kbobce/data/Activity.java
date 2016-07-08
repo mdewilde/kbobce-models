@@ -21,7 +21,7 @@ import be.ceau.kbobce.core.Nace;
 import be.ceau.kbobce.util.Validator;
 
 /**
- * Model definition for an activity of an {@code Enterprise}
+ * An activity of an {@code Enterprise}
  */
 public class Activity {
 
