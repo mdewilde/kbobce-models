@@ -64,7 +64,15 @@ public class Nace extends Code {
 
 	@Override
 	public String toString() {
-		return "Nace [year=" + year + ", code=" + code + "]";
+		return new StringBuilder()
+				.append("Nace [year=")
+				.append(year)
+				.append(", code=")
+				.append(code)
+				.append(", descriptions=")
+				.append(descriptions)
+				.append("]")
+				.toString();
 	}
 	
 }

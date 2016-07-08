@@ -77,7 +77,7 @@ public class EstablishmentNumber {
 
 	@Override
 	public int hashCode() {
-		return 31 * value.hashCode();
+		return value.hashCode();
 	}
 
 	@Override
@@ -94,7 +94,11 @@ public class EstablishmentNumber {
 
 	@Override
 	public String toString() {
-		return "EstablishmentNumber [value=" + value + "]";
+		return new StringBuilder()
+				.append("EstablishmentNumber [value=")
+				.append(value)
+				.append("]")
+				.toString();
 	}
 
 }

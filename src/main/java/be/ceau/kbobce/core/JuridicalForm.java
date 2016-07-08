@@ -28,7 +28,7 @@ public class JuridicalForm extends Code {
 
 	@Override
 	public int hashCode() {
-		return 31 * code.hashCode();
+		return code.hashCode();
 	}
 
 	@Override
@@ -45,7 +45,13 @@ public class JuridicalForm extends Code {
 
 	@Override
 	public String toString() {
-		return "JuridicalForm [code=" + code + "]";
+		return new StringBuilder()
+				.append("JuridicalForm [code=")
+				.append(code)
+				.append(", descriptions=")
+				.append(descriptions)
+				.append("]")
+				.toString();
 	}
 
 }

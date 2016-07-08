@@ -22,13 +22,22 @@ import java.util.Map;
 import be.ceau.kbobce.util.Validator;
 
 /**
- * Class representing a code along with translations in zero or more languages.
+ * A code used in the KBO/BCE dataset, along with translations in zero or more
+ * languages.
  */
 public abstract class Code {
 
 	protected final String code;
 	protected final Map<String, String> descriptions;
-	
+
+	/**
+	 * Constructor
+	 * 
+	 * @param code
+	 *            may not be {@code blank}
+	 * @param descriptions
+	 *            may not be {@code null}
+	 */
 	public Code(String code, Map<String, String> descriptions) {
 		Validator.isNotBlank(code);
 		Validator.isNotNull(descriptions);
@@ -36,10 +45,16 @@ public abstract class Code {
 		this.descriptions = Collections.unmodifiableMap(new HashMap<>(descriptions));
 	}
 
+	/**
+	 * @return a non {@code blank} String
+	 */
 	public String getCode() {
 		return code;
 	}
 
+	/**
+	 * @return unmodifiable map with all translations contained in this code
+	 */
 	public Map<String, String> getDescriptions() {
 		return descriptions;
 	}
@@ -47,10 +62,10 @@ public abstract class Code {
 	public String getDescription(String language) {
 		return descriptions.get(language);
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return 31 * code.hashCode();
+		return code.hashCode();
 	}
 
 	@Override
@@ -67,7 +82,13 @@ public abstract class Code {
 
 	@Override
 	public String toString() {
-		return "Code [code=" + code + ", descriptions=" + descriptions + "]";
+		return new StringBuilder()
+				.append("Code [code=")
+				.append(code)
+				.append(", descriptions=")
+				.append(descriptions)
+				.append("]")
+				.toString();
 	}
-	
+
 }

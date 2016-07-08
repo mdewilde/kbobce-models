@@ -66,7 +66,7 @@ public class Establishment {
 	public Establishment(EstablishmentNumber establishmentNumber, Collection<Denomination> denominations,
 			Collection<Address> addresses, Collection<Contact> contacts, Collection<Activity> activities,
 			LocalDate startDate) {
-		Validator.isNotNull(establishmentNumber, addresses, contacts, addresses, startDate);
+		Validator.isNotNull(establishmentNumber, denominations, addresses, contacts, activities, startDate);
 		this.establishmentNumber = establishmentNumber;
 		this.denominations = Collections.unmodifiableSet(new HashSet<>(denominations));
 		this.addresses = Collections.unmodifiableSet(new HashSet<>(addresses));
@@ -76,7 +76,7 @@ public class Establishment {
 	}
 
 	/**
-	 * @return the identifier number of this {@code Establishment}, never null
+	 * @return the identifier number of this {@code Establishment}, never {@code null}
 	 */
 	public EstablishmentNumber getEstablishmentNumber() {
 		return establishmentNumber;
@@ -140,10 +140,26 @@ public class Establishment {
 		return startDate.equals(other.startDate);
 	}
 
+
 	@Override
 	public String toString() {
-		return "Establishment [establishmentNumber=" + establishmentNumber + ", localDate=" + startDate + "]";
+		return new StringBuilder()
+				.append("Establishment [establishmentNumber=")
+				.append(establishmentNumber)
+				.append(", denominations=")
+				.append(denominations)
+				.append(", addresses=")
+				.append(addresses)
+				.append(", contacts=")
+				.append(contacts)
+				.append(", activities=")
+				.append(activities)
+				.append(", startDate=")
+				.append(startDate)
+				.append("]")
+				.toString();
 	}
+
 
 	public static class Builder {
 

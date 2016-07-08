@@ -34,9 +34,9 @@ public class Denomination {
 	 * Constructor
 	 * 
 	 * @param language
-	 *            not null {@code Language}
+	 *            not {@code null} {@link Language}
 	 * @param typeOfDenomination
-	 *            not null {@code TypeOfDenomination}
+	 *            not {@code null} {@link TypeOfDenomination}
 	 * @param value
 	 *            not blank {@code String}, no more than 320 characters in
 	 *            length
@@ -51,14 +51,14 @@ public class Denomination {
 	}
 	
 	/**
-	 * @return the language of this {@code Denomination}, never null
+	 * @return the language of this {@code Denomination}, never {@code null}
 	 */
 	public Language getLanguage() {
 		return language;
 	}
 
 	/**
-	 * @return the type of this {@code Denomination}, never null
+	 * @return the type of this {@code Denomination}, never {@code null}
 	 */
 	public TypeOfDenomination getTypeOfDenomination() {
 		return typeOfDenomination;
@@ -94,15 +94,21 @@ public class Denomination {
 			return false;
 		} else if (!language.equals(other.language)) {
 			return false;
-		} else if (!typeOfDenomination.equals(other.typeOfDenomination))
-			return false;
-		return true;
+		}
+		return !typeOfDenomination.equals(other.typeOfDenomination);
 	}
 
 	@Override
 	public String toString() {
-		return "Denomination [language=" + language + ", typeOfDenomination=" + typeOfDenomination + ", value=" + value
-				+ "]";
+		return new StringBuilder()
+				.append("Denomination [language=")
+				.append(language)
+				.append(", typeOfDenomination=")
+				.append(typeOfDenomination)
+				.append(", value=")
+				.append(value)
+				.append("]")
+				.toString();
 	}
 
 }

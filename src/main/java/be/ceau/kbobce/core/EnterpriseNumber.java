@@ -154,7 +154,7 @@ public class EnterpriseNumber {
 
 	@Override
 	public int hashCode() {
-		return 31 * value.hashCode();
+		return value.hashCode();
 	}
 
 	@Override
@@ -171,7 +171,11 @@ public class EnterpriseNumber {
 
 	@Override
 	public String toString() {
-		return "EnterpriseNumber [enterpriseNumber=" + value + "]";
+		return new StringBuilder()
+				.append("EnterpriseNumber [value=")
+				.append(value)
+				.append("]")
+				.toString();
 	}
 
 }

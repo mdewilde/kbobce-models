@@ -49,21 +49,21 @@ public class Activity {
 	}
 
 	/**
-	 * @return the group of this {@code Activity}, never null
+	 * @return the group of this {@code Activity}, never {@code null}
 	 */
 	public ActivityGroup getActivityGroup() {
 		return activityGroup;
 	}
 
 	/**
-	 * @return the NACE code of this {@code Activity}, never null
+	 * @return the NACE code of this {@code Activity}, never {@code null}
 	 */
 	public Nace getNace() {
 		return nace;
 	}
 
 	/**
-	 * @return the classification of this {@code Activity}, never null
+	 * @return the classification of this {@code Activity}, never {@code null}
 	 */
 	public Classification getClassification() {
 		return classification;
@@ -92,15 +92,21 @@ public class Activity {
 			return false;
 		if (!classification.equals(other.classification))
 			return false;
-		if (!nace.equals(other.nace))
-			return false;
-		return true;
+		return nace.equals(other.nace);
 	}
 
 	@Override
 	public String toString() {
-		return "Activity [activityGroup=" + activityGroup + ", nace=" + nace + ", classification=" + classification
-				+ "]";
+		return new StringBuilder()
+				.append("Activity [activityGroup=")
+				.append(activityGroup)
+				.append(", nace=")
+				.append(nace)
+				.append(", classification=")
+				.append(classification)
+				.append("]")
+				.toString();
 	}
+
 
 }

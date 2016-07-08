@@ -28,7 +28,7 @@ public class Classification extends Code {
 
 	@Override
 	public int hashCode() {
-		return 31 * code.hashCode();
+		return code.hashCode();
 	}
 
 	@Override
@@ -42,10 +42,17 @@ public class Classification extends Code {
 		Classification other = (Classification) obj;
 		return !code.equals(other.code);
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Classification [code=" + code + "]";
+		return new StringBuilder()
+				.append("Classification [code=")
+				.append(code)
+				.append(", descriptions=")
+				.append(descriptions)
+				.append("]")
+				.toString();
 	}
+	
 
 }

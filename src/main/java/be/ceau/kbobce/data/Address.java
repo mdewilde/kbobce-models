@@ -21,71 +21,37 @@ import be.ceau.kbobce.core.TypeOfAddress;
 import be.ceau.kbobce.util.Validator;
 
 /**
- * Model definition for an address of an {@code Enterprise}
+ * An address of an {@code Enterprise}
  */
 public class Address {
 
 	private final TypeOfAddress typeOfAddress;
 
-	/**
-	 * Voor een adres in het buitenland: de benaming van het land in het
-	 * Nederlands.
-	 */
 	private final String countryNL;
 
-	/**
-	 * Voor een adres in het buitenland: de benaming van het land in het Frans.
-	 */
 	private final String countryFR;
 
-	/**
-	 * Postcode.
-	 */
 	private final String zipcode;
 
-	/**
-	 * De naam van de gemeente in het Nederlands.
-	 */
 	private final String municipalityNL;
 
-	/**
-	 * De naam van de gemeente in het Frans.
-	 */
 	private final String municipalityFR;
 
-	/**
-	 * Straatnaam in het Nederlands.
-	 */
 	private final String streetNL;
 
-	/**
-	 * Straatnaam in het Frans.
-	 */
 	private final String streetFR;
 
-	/**
-	 * Huisnummer (zonder busnummer)
-	 */
 	private final String houseNumber;
 
-	/**
-	 * Busnummer.
-	 */
 	private final String box;
 
-	/**
-	 * Bijkomende informatie over het adres, zoals bijvoorbeeld “City Atrium” of
-	 * “North Gate II & III”.
-	 */
 	private final String extraAddressInfo;
 
-	/**
-	 * Indien het adres is doorgehaald, dan staat hier de datum vanaf wanneer
-	 * het adres doorgehaald is.
-	 */
 	private final LocalDate dateStrikingOff;
 
 	/**
+	 * Constructor
+	 * 
 	 * @param typeOfAddress
 	 *            may not be {@code null}
 	 * @param countryNL
@@ -111,9 +77,7 @@ public class Address {
 	 * @param dateStrikingOff
 	 *            may be {@code null}
 	 */
-	public Address(TypeOfAddress typeOfAddress, String countryNL, String countryFR, String zipcode,
-			String municipalityNL, String municipalityFR, String streetNL, String streetFR, String houseNumber,
-			String box, String extraAddressInfo, LocalDate dateStrikingOff) {
+	public Address(TypeOfAddress typeOfAddress, String countryNL, String countryFR, String zipcode, String municipalityNL, String municipalityFR, String streetNL, String streetFR, String houseNumber, String box, String extraAddressInfo, LocalDate dateStrikingOff) {
 
 		Validator.isNotNull(typeOfAddress);
 		this.typeOfAddress = typeOfAddress;
@@ -179,6 +143,8 @@ public class Address {
 	}
 
 	/**
+	 * Country name in Dutch, if the address is not in Belgium
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getCountryNL() {
@@ -186,6 +152,8 @@ public class Address {
 	}
 
 	/**
+	 * Country name in French, if the address is not in Belgium
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getCountryFR() {
@@ -200,6 +168,8 @@ public class Address {
 	}
 
 	/**
+	 * Name of the municipality in Dutch
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getMunicipalityNL() {
@@ -207,6 +177,8 @@ public class Address {
 	}
 
 	/**
+	 * Name of the municipality in French
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getMunicipalityFR() {
@@ -214,6 +186,8 @@ public class Address {
 	}
 
 	/**
+	 * Streetname in Dutch
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getStreetNL() {
@@ -221,6 +195,8 @@ public class Address {
 	}
 
 	/**
+	 * Streetname in French
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getStreetFR() {
@@ -228,6 +204,8 @@ public class Address {
 	}
 
 	/**
+	 * Housenumber (excluding box number)
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getHouseNumber() {
@@ -242,6 +220,9 @@ public class Address {
 	}
 
 	/**
+	 * Extra information about the address, for example “City Atrium” or “North
+	 * Gate II & III”
+	 * 
 	 * @return String may be empty, never {@code null}
 	 */
 	public String getExtraAddressInfo() {
@@ -249,6 +230,8 @@ public class Address {
 	}
 
 	/**
+	 * The date the address was stricken, if it was stricken
+	 * 
 	 * @return LocalDate may be {@code null}
 	 */
 	public LocalDate getDateStrikingOff() {
@@ -315,10 +298,32 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [typeOfAddress=" + typeOfAddress + ", countryNL=" + countryNL + ", countryFR=" + countryFR
-				+ ", zipcode=" + zipcode + ", municipalityNL=" + municipalityNL + ", municipalityFR=" + municipalityFR
-				+ ", streetNL=" + streetNL + ", streetFR=" + streetFR + ", houseNumber=" + houseNumber + ", box=" + box
-				+ ", extraAddressInfo=" + extraAddressInfo + ", dateStrikingOff=" + dateStrikingOff + "]";
+		return new StringBuilder()	.append("Address [typeOfAddress=")
+									.append(typeOfAddress)
+									.append(", countryNL=")
+									.append(countryNL)
+									.append(", countryFR=")
+									.append(countryFR)
+									.append(", zipcode=")
+									.append(zipcode)
+									.append(", municipalityNL=")
+									.append(municipalityNL)
+									.append(", municipalityFR=")
+									.append(municipalityFR)
+									.append(", streetNL=")
+									.append(streetNL)
+									.append(", streetFR=")
+									.append(streetFR)
+									.append(", houseNumber=")
+									.append(houseNumber)
+									.append(", box=")
+									.append(box)
+									.append(", extraAddressInfo=")
+									.append(extraAddressInfo)
+									.append(", dateStrikingOff=")
+									.append(dateStrikingOff)
+									.append("]")
+									.toString();
 	}
 
 }

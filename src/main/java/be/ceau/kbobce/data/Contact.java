@@ -51,14 +51,14 @@ public class Contact {
 	}
 
 	/**
-	 * @return the type of the establishment of this contact data, never null
+	 * @return the type of the establishment of this contact data, never {@code null}
 	 */
 	public EntityContact getEntityContact() {
 		return entityContact;
 	}
 
 	/**
-	 * @return the type of this contact data, never null
+	 * @return the type of this contact data, never {@code null}
 	 */
 	public ContactType getContactType() {
 		return contactType;
@@ -90,24 +90,24 @@ public class Contact {
 		if (getClass() != obj.getClass())
 			return false;
 		Contact other = (Contact) obj;
-		if (contactType == null) {
-			if (other.contactType != null)
-				return false;
-		} else if (!contactType.equals(other.contactType))
+		if (!contactType.equals(other.contactType))
 			return false;
-		if (entityContact != other.entityContact)
+		if (!entityContact.equals(other.entityContact))
 			return false;
-		if (value == null) {
-			if (other.value != null)
-				return false;
-		} else if (!value.equals(other.value))
-			return false;
-		return true;
+		return value.equals(other.value);
 	}
 
 	@Override
 	public String toString() {
-		return "Contact [entityContact=" + entityContact + ", contactType=" + contactType + ", value=" + value + "]";
+		return new StringBuilder()		
+			.append("Contact [entityContact=")
+			.append(entityContact)
+			.append(", contactType=")
+			.append(contactType)
+			.append(", value=")
+			.append(value)
+			.append("]")
+			.toString();
 	}
 
 }

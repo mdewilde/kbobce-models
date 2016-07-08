@@ -32,7 +32,7 @@ public class EntityContact extends Code {
 
 	@Override
 	public int hashCode() {
-		return 31 * code.hashCode();
+		return code.hashCode();
 	}
 
 	@Override
@@ -49,7 +49,13 @@ public class EntityContact extends Code {
 
 	@Override
 	public String toString() {
-		return "EntityContact [code=" + code + "]";
+		return new StringBuilder()
+				.append("EntityContact [code=")
+				.append(code)
+				.append(", descriptions=")
+				.append(descriptions)
+				.append("]")
+				.toString();
 	}
 
 }

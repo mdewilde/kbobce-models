@@ -28,7 +28,7 @@ public class TypeOfAddress extends Code {
 
 	@Override
 	public int hashCode() {
-		return 31 * code.hashCode();
+		return code.hashCode();
 	}
 
 	@Override
@@ -45,7 +45,13 @@ public class TypeOfAddress extends Code {
 
 	@Override
 	public String toString() {
-		return "TypeOfAddress [code=" + code + "]";
+		return new StringBuilder()
+				.append("TypeOfAddress [code=")
+				.append(code)
+				.append(", descriptions=")
+				.append(descriptions)
+				.append("]")
+				.toString();
 	}
 
 }

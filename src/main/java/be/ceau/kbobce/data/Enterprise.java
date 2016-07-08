@@ -161,11 +161,34 @@ public class Enterprise {
 	
 	@Override
 	public String toString() {
-		return "Enterprise [enterpriseNumber=" + enterpriseNumber + ", status=" + status + ", juridicalSituation="
-				+ juridicalSituation + ", typeOfEnterprise=" + typeOfEnterprise + ", juridicalForm=" + juridicalForm
-				+ ", startDate=" + startDate + ", denominations=" + denominations + ", establishments=" + establishments
-				+ ", addresses=" + addresses + ", contacts=" + contacts + ", activities=" + activities + "]";
+		return new StringBuilder()
+			.append("Enterprise [enterpriseNumber=")
+			.append(enterpriseNumber)
+			.append(", status=")
+			.append(status)
+			.append(", juridicalSituation=")
+			.append(juridicalSituation)
+			.append(", typeOfEnterprise=")
+			.append(typeOfEnterprise)
+			.append(", juridicalForm=")
+			.append(juridicalForm)
+			.append(", startDate=")
+			.append(startDate)
+			.append(", denominations=")
+			.append(denominations)
+			.append(", establishments=")
+			.append(establishments)
+			.append(", addresses=")
+			.append(addresses)
+			.append(", contacts=")
+			.append(contacts)
+			.append(", activities=")
+			.append(activities)
+			.append("]")
+			.toString();
 	}
+
+
 
 	public static class Builder {
 		
@@ -273,11 +296,31 @@ public class Enterprise {
 
 		@Override
 		public String toString() {
-			return "Builder [enterpriseNumber=" + enterpriseNumber + ", status=" + status + ", juridicalSituation="
-					+ juridicalSituation + ", typeOfEnterprise=" + typeOfEnterprise + ", juridicalForm=" + juridicalForm
-					+ ", startDate=" + startDate + ", denominations=" + denominations + ", establishments="
-					+ establishments + ", addresses=" + addresses + ", contacts=" + contacts + ", activities="
-					+ activities + "]";
+			return new StringBuilder()
+					.append("Builder [enterpriseNumber=")
+					.append(enterpriseNumber)
+					.append(", status=")
+					.append(status)
+					.append(", juridicalSituation=")
+					.append(juridicalSituation)
+					.append(", typeOfEnterprise=")
+					.append(typeOfEnterprise)
+					.append(", juridicalForm=")
+					.append(juridicalForm)
+					.append(", startDate=")
+					.append(startDate)
+					.append(", denominations=")
+					.append(denominations)
+					.append(", establishments=")
+					.append(establishments)
+					.append(", addresses=")
+					.append(addresses)
+					.append(", contacts=")
+					.append(contacts)
+					.append(", activities=")
+					.append(activities)
+					.append("]")
+					.toString();
 		}
 		
 	}
