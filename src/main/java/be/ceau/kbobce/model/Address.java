@@ -287,12 +287,8 @@ public class Address {
 			return false;
 		} else if (!extraAddressInfo.equals(other.extraAddressInfo)) {
 			return false;
-		} else if (dateStrikingOff == null && other.dateStrikingOff != null) {
-			return false;
-		} else if (dateStrikingOff == null && other.dateStrikingOff == null) {
-			return true;
-		} else if (dateStrikingOff != null && other.dateStrikingOff == null) {
-			return false;
+		} else if (dateStrikingOff == null) {
+			return other.dateStrikingOff == null;
 		}
 		return dateStrikingOff.equals(other.dateStrikingOff);
 	}
