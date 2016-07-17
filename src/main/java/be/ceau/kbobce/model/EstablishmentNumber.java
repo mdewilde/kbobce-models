@@ -13,7 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.core;
+package be.ceau.kbobce.model;
 
 import java.util.regex.Pattern;
 

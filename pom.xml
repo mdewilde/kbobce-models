@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>be.ceau</groupId>
 	<artifactId>kbobce-models</artifactId>
-	<version>0.4.3</version>
+	<version>0.5.0</version>
 	<name>KBO/BCE Models</name>
 	<description>Model library for adding data from the Belgian Kruispuntbank van ondernemingen (KBO) / Banque-Carrefour des Entreprises (BCE).</description>
 	<url>https://www.ceau.be/kbobce</url>
@@ -100,11 +100,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.21</version>
-		</dependency>
-	</dependencies>
 </project>

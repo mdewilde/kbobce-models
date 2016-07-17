@@ -13,25 +13,17 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.core;
+package be.ceau.kbobce.model;
 
 import java.util.Map;
 
 import be.ceau.kbobce.util.Validator;
 
-/**
- * Indicates the type of contact data:
- * <ul>
- * <li>phone
- * <li>e-mail
- * <li>web adress
- * </ul>
- */
-public class ContactType extends Code {
+public class JuridicalSituation extends Code {
 
-	public ContactType(String code, Map<String, String> descriptions) {
+	public JuridicalSituation(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isMaxLength(5, code);
+		Validator.isLength(3, code);
 	}
 
 	@Override
@@ -47,14 +39,14 @@ public class ContactType extends Code {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ContactType other = (ContactType) obj;
-		return code.equals(other.code);
+		JuridicalSituation other = (JuridicalSituation) obj;
+		return !code.equals(other.code);
 	}
 
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("ContactType [code=")
+				.append("JuridicalSituation [code=")
 				.append(code)
 				.append(", descriptions=")
 				.append(descriptions)

@@ -13,10 +13,8 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.data;
+package be.ceau.kbobce.model;
 
-import be.ceau.kbobce.core.Language;
-import be.ceau.kbobce.core.TypeOfDenomination;
 import be.ceau.kbobce.util.Validator;
 
 /**

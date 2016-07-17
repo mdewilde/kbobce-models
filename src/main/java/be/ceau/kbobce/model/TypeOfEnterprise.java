@@ -13,17 +13,17 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.core;
+package be.ceau.kbobce.model;
 
 import java.util.Map;
 
 import be.ceau.kbobce.util.Validator;
 
-public class ActivityGroup extends Code {
-
-	public ActivityGroup(String code, Map<String, String> descriptions) {
+public class TypeOfEnterprise extends Code {
+	
+	public TypeOfEnterprise(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isMaxLength(6, code);
+		Validator.isLength(1, code);
 	}
 
 	@Override
@@ -39,14 +39,14 @@ public class ActivityGroup extends Code {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ActivityGroup other = (ActivityGroup) obj;
+		TypeOfEnterprise other = (TypeOfEnterprise) obj;
 		return !code.equals(other.code);
 	}
 
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("ActivityGroup [code=")
+				.append("TypeOfEnterprise [code=")
 				.append(code)
 				.append(", descriptions=")
 				.append(descriptions)

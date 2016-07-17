@@ -13,17 +13,17 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.core;
+package be.ceau.kbobce.model;
 
 import java.util.Map;
 
 import be.ceau.kbobce.util.Validator;
 
-public class JuridicalSituation extends Code {
+public class TypeOfAddress extends Code {
 
-	public JuridicalSituation(String code, Map<String, String> descriptions) {
+	public TypeOfAddress(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(3, code);
+		Validator.isLength(4, code);
 	}
 
 	@Override
@@ -39,14 +39,14 @@ public class JuridicalSituation extends Code {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		JuridicalSituation other = (JuridicalSituation) obj;
+		TypeOfAddress other = (TypeOfAddress) obj;
 		return !code.equals(other.code);
 	}
 
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("JuridicalSituation [code=")
+				.append("TypeOfAddress [code=")
 				.append(code)
 				.append(", descriptions=")
 				.append(descriptions)

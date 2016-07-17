@@ -13,11 +13,10 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.data;
+package be.ceau.kbobce.model;
 
 import java.time.LocalDate;
 
-import be.ceau.kbobce.core.TypeOfAddress;
 import be.ceau.kbobce.util.Validator;
 
 /**
@@ -220,8 +219,8 @@ public class Address {
 	}
 
 	/**
-	 * Extra information about the address, for example &quot;City Atrium&quot;
-	 * or &quot;North Gate II & III&quot;
+	 * Extra information about the address, such as "City Atrium" or
+	 * "North Gate II &amp; III"
 	 * 
 	 * @return String may be empty, never {@code null}
 	 */
@@ -292,6 +291,8 @@ public class Address {
 			return false;
 		} else if (dateStrikingOff == null && other.dateStrikingOff == null) {
 			return true;
+		} else if (dateStrikingOff != null && other.dateStrikingOff == null) {
+			return false;
 		}
 		return dateStrikingOff.equals(other.dateStrikingOff);
 	}

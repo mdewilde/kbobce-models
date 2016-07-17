@@ -13,54 +13,17 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.core;
+package be.ceau.kbobce.model;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import be.ceau.kbobce.util.Validator;
 
-/**
- * A code used in the KBO/BCE dataset, along with translations in zero or more
- * languages.
- */
-public abstract class Code {
+public class JuridicalForm extends Code {
 
-	protected final String code;
-	protected final Map<String, String> descriptions;
-
-	/**
-	 * Constructor
-	 * 
-	 * @param code
-	 *            may not be {@code blank}
-	 * @param descriptions
-	 *            may not be {@code null}
-	 */
-	public Code(String code, Map<String, String> descriptions) {
-		Validator.isNotBlank(code);
-		Validator.isNotNull(descriptions);
-		this.code = code;
-		this.descriptions = Collections.unmodifiableMap(new HashMap<>(descriptions));
-	}
-
-	/**
-	 * @return a non {@code blank} String
-	 */
-	public String getCode() {
-		return code;
-	}
-
-	/**
-	 * @return unmodifiable map with all translations contained in this code
-	 */
-	public Map<String, String> getDescriptions() {
-		return descriptions;
-	}
-
-	public String getDescription(String language) {
-		return descriptions.get(language);
+	public JuridicalForm(String code, Map<String, String> descriptions) {
+		super(code, descriptions);
+		Validator.isLength(3, code);
 	}
 
 	@Override
@@ -76,14 +39,14 @@ public abstract class Code {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Code other = (Code) obj;
+		JuridicalForm other = (JuridicalForm) obj;
 		return code.equals(other.code);
 	}
 
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("Code [code=")
+				.append("JuridicalForm [code=")
 				.append(code)
 				.append(", descriptions=")
 				.append(descriptions)
