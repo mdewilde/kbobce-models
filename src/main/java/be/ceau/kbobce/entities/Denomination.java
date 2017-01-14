@@ -1,11 +1,11 @@
 /*
-	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	Copyright 2017 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
 	
-		http://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 	
 	Unless required by applicable law or agreed to in writing, software
 	distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,17 +13,29 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.model;
+package be.ceau.kbobce.entities;
 
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+
+import be.ceau.kbobce.codes.Language;
+import be.ceau.kbobce.codes.TypeOfDenomination;
 import be.ceau.kbobce.util.Validator;
 
 /**
  * A name of an {@code Enterprise}.
  */
-public class Denomination {
+@Embeddable
+public class Denomination implements Serializable {
 
+	private static final long serialVersionUID = -7484250141081148438L;
+
+	@Embedded
 	private final Language language;
 
+	@Embedded
 	private final TypeOfDenomination typeOfDenomination;
 
 	private final String value;

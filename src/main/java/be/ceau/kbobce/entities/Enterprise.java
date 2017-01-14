@@ -1,11 +1,11 @@
 /*
-	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	Copyright 2017 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
 	
-		http://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 	
 	Unless required by applicable law or agreed to in writing, software
 	distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,8 +13,9 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.model;
+package be.ceau.kbobce.entities;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,31 +26,59 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import be.ceau.kbobce.codes.JuridicalForm;
+import be.ceau.kbobce.codes.JuridicalSituation;
+import be.ceau.kbobce.codes.Status;
+import be.ceau.kbobce.codes.TypeOfEnterprise;
+
 /**
  * Main model for this library.
  */
-public class Enterprise {
+@Entity
+@Access(AccessType.FIELD)
+public class Enterprise implements Serializable {
 
+	private static final long serialVersionUID = -7208961869042372940L;
+
+	@EmbeddedId
 	private final EnterpriseNumber enterpriseNumber;
 
+	@Embedded
 	private final Status status;
 
+	@Embedded
 	private final JuridicalSituation juridicalSituation;
 
+	@Embedded
 	private final TypeOfEnterprise typeOfEnterprise;
 
+	@Embedded
 	private final JuridicalForm juridicalForm;
 
+	@Embedded
 	private final LocalDate startDate;
 
+	@ElementCollection
 	private final Set<Denomination> denominations;
 
+	@OneToMany
 	private final Set<Establishment> establishments;
 
+	@ElementCollection
 	private final Set<Address> addresses;
 
+	@ElementCollection
 	private final Set<Contact> contacts;
 
+	@ElementCollection
 	private final Set<Activity> activities;
 
 	public static Builder builder() {
@@ -203,7 +232,9 @@ public class Enterprise {
 				.append(", activities=").append(activities).append("]").toString();
 	}
 
-	public static class Builder {
+	public static class Builder implements Serializable {
+
+		private static final long serialVersionUID = 4187227128655182472L;
 
 		private EnterpriseNumber enterpriseNumber;
 		private Status status;
@@ -324,31 +355,8 @@ public class Enterprise {
 
 		@Override
 		public String toString() {
-			return new StringBuilder()
-					.append("Enterprise.Builder [enterpriseNumber=")
-					.append(enterpriseNumber)
-					.append(", status=")
-					.append(status)
-					.append(", juridicalSituation=")
-					.append(juridicalSituation)
-					.append(", typeOfEnterprise=")
-					.append(typeOfEnterprise)
-					.append(", juridicalForm=")
-					.append(juridicalForm)
-					.append(", startDate=")
-					.append(startDate)
-					.append(", denominations=")
-					.append(denominations)
-					.append(", establishments=")
-					.append(establishments)
-					.append(", addresses=")
-					.append(addresses)
-					.append(", contacts=")
-					.append(contacts)
-					.append(", activities=")
-					.append(activities)
-					.append("]")
-					.toString();
+			return new StringBuilder().append("Enterprise.Builder [enterpriseNumber=").append(enterpriseNumber).append(", status=").append(status).append(", juridicalSituation=").append(juridicalSituation).append(", typeOfEnterprise=").append(typeOfEnterprise).append(", juridicalForm=").append(juridicalForm).append(", startDate=").append(startDate).append(", denominations=").append(denominations).append(", establishments=").append(establishments).append(", addresses=").append(addresses).append(", contacts=")
+					.append(contacts).append(", activities=").append(activities).append("]").toString();
 		}
 
 	}

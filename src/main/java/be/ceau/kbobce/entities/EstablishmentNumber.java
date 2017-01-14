@@ -1,11 +1,11 @@
 /*
-	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	Copyright 2017 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
 	
-		http://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 	
 	Unless required by applicable law or agreed to in writing, software
 	distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,21 +13,30 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.model;
+package be.ceau.kbobce.entities;
 
+import java.io.Serializable;
 import java.util.regex.Pattern;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Embeddable;
+
 /**
- * Het nummer van de vestigingseenheid.
+ * The identifying number of an {@link Establishment}
  */
-public class EstablishmentNumber {
+@Embeddable
+@Access(AccessType.FIELD)
+public class EstablishmentNumber implements Serializable {
+
+	private static final long serialVersionUID = 8778758175781262698L;
 
 	private static final Pattern FORMAT = Pattern.compile("[0-9]\\.[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}");
 
 	private final String value;
 
 	/**
-	 * Construct a new {@link EstablishmentNumber}.<br>
+	 * Construct a new {@link EstablishmentNumber}.
 	 * 
 	 * @param value
 	 *            a valid, correctly formatted establishment number.
@@ -35,7 +44,7 @@ public class EstablishmentNumber {
 	 *             if argument not valid. Avoid this exception by passing only
 	 *             input validated with the static {@link #isValid} method, or
 	 *             by using the static factory to create a new
-	 *             EstablishmentNumber.
+	 *             {@link EstablishmentNumber}.
 	 */
 	public EstablishmentNumber(String value) {
 		if (!EstablishmentNumber.isValid(value)) {

@@ -1,11 +1,11 @@
 /*
-	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	Copyright 2017 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
 	
-		http://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 	
 	Unless required by applicable law or agreed to in writing, software
 	distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,17 +13,25 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.model;
+package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Embeddable;
+
 import be.ceau.kbobce.util.Validator;
 
-public class TypeOfDenomination extends Code {
+@Embeddable
+@Access(AccessType.FIELD)
+public class TypeOfAddress extends Code {
 
-	public TypeOfDenomination(String code, Map<String, String> descriptions) {
+	private static final long serialVersionUID = -7982426047624797767L;
+
+	public TypeOfAddress(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(3, code);
+		Validator.isLength(4, code);
 	}
 
 	@Override
@@ -39,17 +47,21 @@ public class TypeOfDenomination extends Code {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TypeOfDenomination other = (TypeOfDenomination) obj;
+		TypeOfAddress other = (TypeOfAddress) obj;
 		return !code.equals(other.code);
 	}
 
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("TypeOfDenomination [code=")
+				.append("TypeOfAddress [code=")
 				.append(code)
-				.append(", descriptions=")
-				.append(descriptions)
+				.append(", nl=")
+				.append(nl)
+				.append(", fr=")
+				.append(fr)
+				.append(", de=")
+				.append(de)
 				.append("]")
 				.toString();
 	}

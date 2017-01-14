@@ -1,6 +1,11 @@
 # KboBce
 
-KboBce is a model library for representing data from the Belgian _Kruispuntbank van ondernemingen_ or _KBO_ (aka _Banque-Carrefour des Entreprises_ or _BCE_) in a Java application.
+KboBce is a model library for representing data from the Belgian _Kruispuntbank van ondernemingen_ or _KBO_ (aka _Banque-Carrefour des Entreprises_ or _BCE_) in a Java application. 
+
+The _KBO_ is also known as the _CBE_, short for _Crossroads Enterprise Database_.
+
+The _KBO_ is also known as the _ZDU_, short for _Zentrale Datenbank der Unternehmen_.
+
 
 ### Prerequisites
 
@@ -28,4 +33,4 @@ Source code is available on [GitHub](https://github.com/mdewilde/kbobce-models).
 Verify signature files with my [GnuPG public key](https://www.ceau.be/pubkey.gpg).
 
 ### License
-KboBce is licensed under [the Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0.txt).
+KboBce is licensed under [the Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).

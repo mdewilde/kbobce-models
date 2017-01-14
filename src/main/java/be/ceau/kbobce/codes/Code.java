@@ -1,11 +1,11 @@
 /*
-	Copyright 2016 Marceau Dewilde <m@ceau.be>
+	Copyright 2017 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
 	
-		http://www.apache.org/licenses/LICENSE-2.0
+		https://www.apache.org/licenses/LICENSE-2.0
 	
 	Unless required by applicable law or agreed to in writing, software
 	distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,11 +13,14 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
-package be.ceau.kbobce.model;
+package be.ceau.kbobce.codes;
 
-import java.util.Collections;
-import java.util.HashMap;
+import java.io.Serializable;
 import java.util.Map;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.MappedSuperclass;
 
 import be.ceau.kbobce.util.Validator;
 
@@ -25,42 +28,61 @@ import be.ceau.kbobce.util.Validator;
  * A code used in the KBO/BCE dataset, along with translations in zero or more
  * languages.
  */
-public abstract class Code {
+@MappedSuperclass
+@Access(AccessType.FIELD)
+public abstract class Code implements Serializable {
+
+	private static final long serialVersionUID = 4667958339551715533L;
 
 	protected final String code;
-	protected final Map<String, String> descriptions;
+	
+	protected final String nl;
+	protected final String fr;
+	protected final String de;
 
 	/**
 	 * Constructor
 	 * 
 	 * @param code
-	 *            may not be {@code blank}
+	 *            a {@link String}, not {@code blank}
 	 * @param descriptions
-	 *            may not be {@code null}
+	 *            a {@link String}, not {@code null}
 	 */
 	public Code(String code, Map<String, String> descriptions) {
 		Validator.isNotBlank(code);
 		Validator.isNotNull(descriptions);
 		this.code = code;
-		this.descriptions = Collections.unmodifiableMap(new HashMap<>(descriptions));
+		this.nl = descriptions.get("NL");
+		this.fr = descriptions.get("FR");
+		this.de = descriptions.get("DE");
 	}
 
 	/**
-	 * @return a non {@code blank} String
+	 * @return a non blank {@link String}
 	 */
 	public String getCode() {
 		return code;
 	}
 
 	/**
-	 * @return unmodifiable map with all translations contained in this code
+	 * @return Dutch translation {@link String}, or {@code null}
 	 */
-	public Map<String, String> getDescriptions() {
-		return descriptions;
+	public String getNl() {
+		return nl;
 	}
 
-	public String getDescription(String language) {
-		return descriptions.get(language);
+	/**
+	 * @return French translation {@link String}, or {@code null}
+	 */
+	public String getFr() {
+		return fr;
+	}
+
+	/**
+	 * @return German translation {@link String}, or {@code null}
+	 */
+	public String getDe() {
+		return de;
 	}
 
 	@Override
@@ -85,10 +107,15 @@ public abstract class Code {
 		return new StringBuilder()
 				.append("Code [code=")
 				.append(code)
-				.append(", descriptions=")
-				.append(descriptions)
+				.append(", nl=")
+				.append(nl)
+				.append(", fr=")
+				.append(fr)
+				.append(", de=")
+				.append(de)
 				.append("]")
 				.toString();
 	}
 
+	
 }
