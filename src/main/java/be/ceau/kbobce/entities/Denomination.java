@@ -17,9 +17,6 @@ package be.ceau.kbobce.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-
 import be.ceau.kbobce.codes.Language;
 import be.ceau.kbobce.codes.TypeOfDenomination;
 import be.ceau.kbobce.util.Validator;
@@ -27,15 +24,12 @@ import be.ceau.kbobce.util.Validator;
 /**
  * A name of an {@code Enterprise}.
  */
-@Embeddable
 public class Denomination implements Serializable {
 
 	private static final long serialVersionUID = -7484250141081148438L;
 
-	@Embedded
 	private final Language language;
 
-	@Embedded
 	private final TypeOfDenomination typeOfDenomination;
 
 	private final String value;

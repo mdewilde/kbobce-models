@@ -18,18 +18,12 @@ package be.ceau.kbobce.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 import be.ceau.kbobce.codes.TypeOfAddress;
 import be.ceau.kbobce.util.Validator;
 
 /**
  * An address of an {@code Enterprise}
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class Address implements Serializable {
 
 	private static final long serialVersionUID = 484080285262597494L;
@@ -154,7 +148,7 @@ public class Address implements Serializable {
 	/**
 	 * Country name in Dutch, if the address is not in Belgium
 	 * 
-	 * @return String may be empty, never {@code null}
+	 * @return {@link String} possibly empty, never {@code null}
 	 */
 	public String getCountryNL() {
 		return countryNL;
@@ -163,14 +157,14 @@ public class Address implements Serializable {
 	/**
 	 * Country name in French, if the address is not in Belgium
 	 * 
-	 * @return String may be empty, never {@code null}
+	 * @return {@link String} possibly empty, never {@code null}
 	 */
 	public String getCountryFR() {
 		return countryFR;
 	}
 
 	/**
-	 * @return String may be empty, never {@code null}
+	 * @return {@link String} possibly empty, never {@code null}
 	 */
 	public String getZipcode() {
 		return zipcode;

@@ -17,22 +17,12 @@ package be.ceau.kbobce.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
 import be.ceau.kbobce.codes.JuridicalForm;
 import be.ceau.kbobce.codes.JuridicalSituation;
@@ -42,48 +32,39 @@ import be.ceau.kbobce.codes.TypeOfEnterprise;
 /**
  * Main model for this library.
  */
-@Entity
-@Access(AccessType.FIELD)
 public class Enterprise implements Serializable {
 
 	private static final long serialVersionUID = -7208961869042372940L;
 
-	@EmbeddedId
-	private final EnterpriseNumber enterpriseNumber;
-
-	@Embedded
-	private final Status status;
-
-	@Embedded
-	private final JuridicalSituation juridicalSituation;
-
-	@Embedded
-	private final TypeOfEnterprise typeOfEnterprise;
-
-	@Embedded
-	private final JuridicalForm juridicalForm;
-
-	@Embedded
-	private final LocalDate startDate;
-
-	@ElementCollection
-	private final Set<Denomination> denominations;
-
-	@OneToMany
-	private final Set<Establishment> establishments;
-
-	@ElementCollection
-	private final Set<Address> addresses;
-
-	@ElementCollection
-	private final Set<Contact> contacts;
-
-	@ElementCollection
-	private final Set<Activity> activities;
-
+	/**
+	 * @return a new {@link Builder} instance for fluent construction of an
+	 *         {@link Enterprise}
+	 */
 	public static Builder builder() {
 		return new Enterprise.Builder();
 	}
+
+	private final EnterpriseNumber enterpriseNumber;
+
+	private final Status status;
+
+	private final JuridicalSituation juridicalSituation;
+
+	private final TypeOfEnterprise typeOfEnterprise;
+
+	private final JuridicalForm juridicalForm;
+
+	private final LocalDate startDate;
+
+	private final Set<Denomination> denominations;
+
+	private final Set<Establishment> establishments;
+
+	private final Set<Address> addresses;
+
+	private final Set<Contact> contacts;
+
+	private final Set<Activity> activities;
 
 	/**
 	 * Constructs a new immutable {@code Entreprise} instance
@@ -97,7 +78,7 @@ public class Enterprise implements Serializable {
 	 * @param typeOfEnterprise
 	 *            {@link TypeOfEnterprise} instance, not {@code null}
 	 * @param juridicalForm
-	 *            {@link JuridicalForm} instance, not {@code null}
+	 *            {@link JuridicalForm} instance, can be {@code null}
 	 * @param startDate
 	 *            {@link LocalDate} instance, not {@code null}
 	 * @param denominations
@@ -118,7 +99,7 @@ public class Enterprise implements Serializable {
 	 */
 	public Enterprise(EnterpriseNumber enterpriseNumber, Status status, JuridicalSituation juridicalSituation, TypeOfEnterprise typeOfEnterprise, JuridicalForm juridicalForm, LocalDate startDate, Collection<Denomination> denominations, Collection<Establishment> establishments, Collection<Address> addresses, Collection<Contact> contacts, Collection<Activity> activities) {
 
-		if (!isValid(enterpriseNumber, status, juridicalSituation, typeOfEnterprise, juridicalForm, startDate)) {
+		if (!isValid(enterpriseNumber, status, juridicalSituation, typeOfEnterprise, startDate)) {
 			throw new IllegalArgumentException("at least one required argument is null");
 		}
 
@@ -161,8 +142,8 @@ public class Enterprise implements Serializable {
 
 	}
 
-	public static boolean isValid(EnterpriseNumber enterpriseNumber, Status status, JuridicalSituation juridicalSituation, TypeOfEnterprise typeOfEnterprise, JuridicalForm juridicalForm, LocalDate startDate) {
-		return enterpriseNumber != null && status != null && juridicalSituation != null && typeOfEnterprise != null && juridicalForm != null && startDate != null;
+	public static boolean isValid(EnterpriseNumber enterpriseNumber, Status status, JuridicalSituation juridicalSituation, TypeOfEnterprise typeOfEnterprise, LocalDate startDate) {
+		return enterpriseNumber != null && status != null && juridicalSituation != null && typeOfEnterprise != null && startDate != null;
 	}
 
 	public EnterpriseNumber getEnterpriseNumber() {
@@ -243,7 +224,7 @@ public class Enterprise implements Serializable {
 		private JuridicalForm juridicalForm;
 		private LocalDate startDate;
 		private Set<Denomination> denominations = new HashSet<>();
-		private Map<EstablishmentNumber, Establishment.Builder> establishments = new HashMap<>();
+		private Map<EstablishmentNumber, Establishment> establishments = new HashMap<>();
 		private Set<Address> addresses = new HashSet<>();
 		private Set<Contact> contacts = new HashSet<>();
 		private Set<Activity> activities = new HashSet<>();
@@ -295,28 +276,18 @@ public class Enterprise implements Serializable {
 			return this;
 		}
 
-		public Builder addEstablishment(Establishment.Builder establishment) {
+		public Builder addEstablishment(Establishment establishment) {
 			this.establishments.put(establishment.getEstablishmentNumber(), establishment);
 			return this;
 		}
 
-		public Builder addEstablishments(Collection<Establishment.Builder> establishments) {
-			for (Establishment.Builder establishment : establishments) {
-				this.establishments.put(establishment.getEstablishmentNumber(), establishment);
-			}
+		public Builder addEstablishments(Collection<Establishment> establishments) {
+			establishments.forEach(e -> addEstablishment(e));
 			return this;
 		}
 
-		public Establishment.Builder getEstablishmentBuilder(EstablishmentNumber establishmentNumber) {
-			return this.establishments.get(establishmentNumber);
-		}
-
 		private Collection<Establishment> getEstablishments() {
-			List<Establishment> establishments = new ArrayList<>();
-			for (Establishment.Builder builder : this.establishments.values()) {
-				establishments.add(builder.build());
-			}
-			return establishments;
+			return establishments.values();
 		}
 
 		public Builder addAddress(Address address) {

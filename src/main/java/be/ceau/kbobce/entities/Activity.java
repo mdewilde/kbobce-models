@@ -17,11 +17,6 @@ package be.ceau.kbobce.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-
 import be.ceau.kbobce.codes.ActivityGroup;
 import be.ceau.kbobce.codes.Classification;
 import be.ceau.kbobce.codes.Nace;
@@ -30,19 +25,14 @@ import be.ceau.kbobce.util.Validator;
 /**
  * An activity of an {@code Enterprise}
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class Activity implements Serializable {
 
 	private static final long serialVersionUID = -8162508698551226674L;
 
-	@Embedded
 	private final ActivityGroup activityGroup;
 	
-	@Embedded
 	private final Nace nace;
 	
-	@Embedded
 	private final Classification classification;
 
 	/**

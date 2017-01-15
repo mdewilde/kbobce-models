@@ -18,18 +18,12 @@ package be.ceau.kbobce.codes;
 import java.io.Serializable;
 import java.util.Map;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.MappedSuperclass;
-
 import be.ceau.kbobce.util.Validator;
 
 /**
  * A code used in the KBO/BCE dataset, along with translations in zero or more
  * languages.
  */
-@MappedSuperclass
-@Access(AccessType.FIELD)
 public abstract class Code implements Serializable {
 
 	private static final long serialVersionUID = 4667958339551715533L;

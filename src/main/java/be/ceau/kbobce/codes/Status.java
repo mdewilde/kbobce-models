@@ -17,14 +17,8 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 import be.ceau.kbobce.util.Validator;
 
-@Embeddable
-@Access(AccessType.FIELD)
 public class Status extends Code {
 
 	private static final long serialVersionUID = -9072577228229060756L;

@@ -17,16 +17,10 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 /**
  * <strong>Nomenclature génerale des Activités économiques dans les Communautées Européennes</strong>
  * <a href="http://statbel.fgov.be/nl/statistieken/gegevensinzameling/nomenclaturen/nacebel/">source</a>
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class Nace extends Code {
 
 	private static final long serialVersionUID = -5512251988222060116L;

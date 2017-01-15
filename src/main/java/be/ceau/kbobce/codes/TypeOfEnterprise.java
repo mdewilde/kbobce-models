@@ -17,14 +17,8 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 import be.ceau.kbobce.util.Validator;
 
-@Embeddable
-@Access(AccessType.FIELD)
 public class TypeOfEnterprise extends Code {
 	
 	private static final long serialVersionUID = -925395702981771050L;

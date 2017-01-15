@@ -17,18 +17,12 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 import be.ceau.kbobce.util.Validator;
 
 /**
  * Geeft aan voor welk type entiteit dit een contactgegeven is: onderneming,
  * bijhuis of vestigingseenheid.
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class EntityContact extends Code {
 
 	private static final long serialVersionUID = -3897643256867202036L;

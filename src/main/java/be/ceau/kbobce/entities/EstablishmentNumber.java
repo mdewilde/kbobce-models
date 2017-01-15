@@ -18,25 +18,72 @@ package be.ceau.kbobce.entities;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 /**
- * The identifying number of an {@link Establishment}
+ * The identifying number of an {@link Establishment}. An
+ * {@link EstablishmentNumber} is the id field of an {@link Establishment}.
+ * Instances are immutable.
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class EstablishmentNumber implements Serializable {
 
 	private static final long serialVersionUID = 8778758175781262698L;
 
 	private static final Pattern FORMAT = Pattern.compile("[0-9]\\.[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}");
 
+
+	/**
+	 * Validate the given {@link String} as a possible {@code EstablishmentNumber}
+	 * 
+	 * @param establishmentNumber
+	 *            {@code String} to validate as a possible
+	 *            {@code EstablishmentNumber}
+	 * @return true if the given argument is a valid, correctly formatted
+	 *         establishment number
+	 */
+	public static boolean isValid(String establishmentNumber) {
+		if (establishmentNumber == null) {
+			return false;
+		}
+		return FORMAT.matcher(establishmentNumber).matches();
+	}
+
+	/**
+	 * Static factory for safe construction of {@link EstablishmentNumber}
+	 * instances. If {@code establishmentNumber} argument fails
+	 * {@link #isValid(String)} check, {@code null} is returned.
+	 * 
+	 * @param establishmentNumber
+	 *            a {@link String}, can be empty or {@code null}
+	 * @return an {@link EstablishmentNumber} or {@code null}
+	 */
+	public static EstablishmentNumber parse(String establishmentNumber) {
+		if (establishmentNumber == null) {
+			return null;
+		}
+		if (isValid(establishmentNumber)) {
+			return new EstablishmentNumber(establishmentNumber);
+		}
+		return null;
+	}
+
+	/**
+	 * Attempts constructing a new {@link EstablishmentNumber} from the given long
+	 * value.
+	 * 
+	 * @param number
+	 *            the long value of this number, as returned from
+	 *            {@link EstablishmentNumber#asLong()}
+	 * @return an {@link EstablishmentNumber} or {@code null}
+	 */
+	public static EstablishmentNumber fromLong(long number) {
+		String t = String.format("%010d", number);
+		t = t.substring(0, 1) + '.' + t.substring(1, 4) + '.' + t.substring(4, 7) + '.' + t.substring(7);
+		return EstablishmentNumber.parse(t);
+	}
+	
 	private final String value;
 
 	/**
-	 * Construct a new {@link EstablishmentNumber}.
+	 * Construct a new immutable {@link EstablishmentNumber} instance.
 	 * 
 	 * @param value
 	 *            a valid, correctly formatted establishment number.
@@ -54,34 +101,17 @@ public class EstablishmentNumber implements Serializable {
 	}
 
 	/**
-	 * Validate the given string as a possible {@code EstablishmentNumber}
-	 * 
-	 * @param establishmentNumber
-	 *            {@code String} to validate as a possible
-	 *            {@code EstablishmentNumber}
-	 * @return true if the given argument is a valid, correctly formatted
-	 *         establishment number
+	 * @return the raw {@link String} value
 	 */
-	public static boolean isValid(String establishmentNumber) {
-		if (establishmentNumber == null) {
-			return false;
-		}
-		return FORMAT.matcher(establishmentNumber).matches();
-	}
-
-	public static EstablishmentNumber parse(String establishmentNumber) {
-		if (establishmentNumber == null) {
-			return null;
-		}
-		if (isValid(establishmentNumber)) {
-			return new EstablishmentNumber(establishmentNumber);
-		} else {
-			return null;
-		}
-	}
-
 	public String getValue() {
 		return value;
+	}
+
+	/**
+	 * @return long value from this {@link EstablishmentNumber}
+	 */
+	public long asLong() {
+		return Long.parseLong(value.substring(0, 1) + value.substring(2, 5) + value.substring(6, 9) + value.substring(10));
 	}
 
 	@Override

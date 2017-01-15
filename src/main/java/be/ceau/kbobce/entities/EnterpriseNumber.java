@@ -18,104 +18,26 @@ package be.ceau.kbobce.entities;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 /**
- * http://www.ond.vlaanderen.be/welzijn/stage/faq18.htm
- * <blockquote> Wat
- * is de betekenis van het ondernemingsnummer of nr KBO?
- * 
- * De administratieve vereenvoudiging staat hoog vermeld in de
- * beleidsprioriteiten van de regering. Een van de belangrijkste middelen om
- * deze beleidsprioriteit te verwezenlijken is het e-government: het beroep op
- * de informatie- en communicatietechnologie (ICT) om het –administratieve–
- * leven van burger en onderneming eenvoudiger te maken. De basisidee van de
- * Kruispuntbank van Ondernemingen (KBO) is al enkele jaren oud. Aanvankelijk
- * heette dit project “repertorium van rechtspersonen”, nadien
- * “ondernemingsregister” en tenslotte “kruispuntbank”. Tal van
- * overheidsdiensten hebben dagelijks identificatiegegevens van ondernemingen
- * nodig. Tot voor 1 juli 2003 voorzagen de specifieke reglementeringen van al
- * die departementen dat, om een bepaalde beslissing te verkrijgen, de
- * belanghebbenden welbepaalde identificatiegegevens moesten mededelen. Voor
- * alle overheidsdiensten samen was dat natuurlijk een immens dubbel gebruik
- * aangezien in al deze diensten personen belast waren met het registreren en
- * het actueel houden van die gegevens. Bovendien was dergelijk systeem oorzaak
- * van inefficiëntie aangezien dubbele of meervoudige gegevensopslag
- * noodzakelijkerwijze leidde tot conflicten tussen de inhoud van de
- * verschillende bestanden. Zodra een onderneming een wijziging mededeelde aan
- * een dienst en niet aan een andere kreeg men verschillen in de databases en
- * werd het zeer moeilijk om uit te vinden wat nu juist de correcte gegevens
- * waren.
- * 
- * Vandaar de idee om de identificatiegegevens van de ondernemingen op een
- * eenvormige wijze en centraal ter beschikking te stellen van alle diensten.
- * Dit heeft veel voordelen. Voor de overheidsdiensten betekent dit eerst en
- * vooral dat zij met zekerheid over de meest actuele en juiste gegevens
- * beschikken. Naast het voordeel van juiste informatie sparen zij ook werk uit
- * aangezien nu in al die verschillende diensten het werk wordt verricht dat
- * voortaan centraal zal gebeuren. Men spaart dus personeel en middelen die
- * vrijkomen voor andere opdrachten die meer rechtstreeks met de kerntaken van
- * de betrokken diensten verband houden. Voor de ondernemingen is het voordeel
- * nog groter. Zij moeten immers hun identificatiegegevens nog slechts één
- * enkele keer aan de overheid geven. Eens zij een identificatienummer gekregen
- * hebben, volstaat de mededeling van dat nummer waarna de overheidsdiensten
- * zelf de nodige identificatiegegevens zullen kunnen opvragen bij de
- * Kruispuntbank van Ondernemingen. Administratieve vereenvoudiging met een
- * hoofdletter dus. Samengevat komt het er op neer dat ondernemingen maar
- * eenmaal hun gegevens meer moeten doorgeven aan de overheidsdiensten.
- * 
- * Meer info vind je op:
- * http://kbo-bce-ps.mineco.fgov.be/ps/kbo_ps/kbo_search.jsp?lang=nl&amp;dest=ST
- * 
- * Men onderscheidt het ondernemingsnummer of nr. KBO en het
- * vestigingseenheidsnummer in deze nieuwe aanpak van e-government. De reden
- * waarom we voor de stages het ondernemingsnummer nodig is hebben, is op vraag
- * van externe diensten. Zij werken "standaard" met het ondernemingsnummer. Het
- * nummer moet in onze naamlijst worden ingevuld voor de opvolging van de
- * gezondheidsbeoordelingen. Dit nummer kan je best opvragen in de
- * stageovereenkomst, dan wordt het standaard meegegeven.
- * 
- * Je kan het zelf ook opzoeken. Het ondernemingsnummer kan eenvoudig via de
- * naam van de stagegever opgezocht worden op:
- * http://kbo-bce-ps.mineco.fgov.be/ps/kbo_ps/kbo_search.jsp?lang=nl&amp;dest=ST
- * 
- * Het ondernemingsnummer bestaat uit 10 cijfers en begint met een 0. Het
- * formaat is: 0xxx.xxx.xxx </blockquote>
- * 
+ * The nationally unique identifying number of a Belgian {@link Enterprise}. An
+ * {@link EnterpriseNumber} is the id field of an {@link Enterprise}.
+ * Instances are immutable.
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class EnterpriseNumber implements Serializable {
 
 	private static final long serialVersionUID = -3112897886124790983L;
 
 	private static final Pattern PATTERN = Pattern.compile("0[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}");
 
-	private final String value;
-
 	/**
-	 * Construct a new {@link EnterpriseNumber}.
+	 * Static factory for safe construction of {@link EnterpriseNumber}
+	 * instances. If {@code enterpriseNumber} argument fails
+	 * {@link #isValid(String)} check, {@code null} is returned.
 	 * 
-	 * @param value
-	 *            a valid, correctly formatted enterprise number.
-	 * @throws IllegalArgumentException
-	 *             if argument not valid. Avoid this exception by passing only
-	 *             input validated with static {@link #isValid} method, or by
-	 *             using the static factory to create a new EnterpriseNumber.
+	 * @param enterpriseNumber
+	 *            a {@link String}, can be empty or {@code null}
+	 * @return an {@link EnterpriseNumber} or {@code null}
 	 */
-	public EnterpriseNumber(String value) {
-		if (!EnterpriseNumber.isValid(value)) {
-			throw new IllegalArgumentException("argument is not a valid EnterpriseNumber");
-		}
-		this.value = value;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
 	public static EnterpriseNumber parse(String enterpriseNumber) {
 		if (enterpriseNumber == null) {
 			return null;
@@ -146,13 +68,13 @@ public class EnterpriseNumber implements Serializable {
 	}
 
 	/**
-	 * Validate the given string as a possible {@code EnterpriseNumber}
+	 * Validate the given {@link String} as a possible {@code EnterpriseNumber}
 	 * 
 	 * @param enterpriseNumber
 	 *            a {@code String} to validate as a possible
 	 *            {@code EnterpriseNumber}
 	 * @return true if the given argument is a valid, correctly formatted
-	 *         EnterpriseNumber
+	 *         enterprise number
 	 */
 	public static boolean isValid(String enterpriseNumber) {
 		if (enterpriseNumber == null) {
@@ -161,6 +83,57 @@ public class EnterpriseNumber implements Serializable {
 		return PATTERN.matcher(enterpriseNumber).matches();
 	}
 
+	/**
+	 * Attempts constructing a new {@link EnterpriseNumber} from the given long
+	 * value.
+	 * 
+	 * @param number
+	 *            the long value of this number, as returned from
+	 *            {@link EnterpriseNumber#asLong()}
+	 * @return an {@link EnterpriseNumber} or {@code null}
+	 */
+	public static EnterpriseNumber fromLong(long number) {
+		if (number > 999999999l) {
+			return null;
+		}
+		String raw = String.format("%010d", number);
+		raw = raw.substring(0, 4) + '.' + raw.substring(4, 7) + '.' + raw.substring(7);
+		return EnterpriseNumber.parse(raw);
+	}
+
+	private final String value;
+
+	/**
+	 * Construct a new {@link EnterpriseNumber}.
+	 * 
+	 * @param value
+	 *            a valid, correctly formatted enterprise number.
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method, or by
+	 *             using the static factory to create a new EnterpriseNumber.
+	 */
+	public EnterpriseNumber(String value) {
+		if (!EnterpriseNumber.isValid(value)) {
+			throw new IllegalArgumentException("argument is not a valid EnterpriseNumber");
+		}
+		this.value = value;
+	}
+
+	/**
+	 * @return the raw {@link String} value
+	 */
+	public String getValue() {
+		return value;
+	}
+
+	/**
+	 * @return long value from this {@link EnterpriseNumber}
+	 */
+	public long asLong() {
+		return Long.parseLong(value.substring(1, 4) + value.substring(5, 8) + value.substring(9));
+	}
+	
 	@Override
 	public int hashCode() {
 		return value.hashCode();

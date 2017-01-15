@@ -17,11 +17,6 @@ package be.ceau.kbobce.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-
 import be.ceau.kbobce.codes.ContactType;
 import be.ceau.kbobce.codes.EntityContact;
 import be.ceau.kbobce.util.Validator;
@@ -29,16 +24,12 @@ import be.ceau.kbobce.util.Validator;
 /**
  * Contact data of an {@code Enterprise}
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class Contact implements Serializable {
 
 	private static final long serialVersionUID = -8048688693470336154L;
 
-	@Embedded
 	private final EntityContact entityContact;
 	
-	@Embedded
 	private final ContactType contactType;
 	
 	private final String value;

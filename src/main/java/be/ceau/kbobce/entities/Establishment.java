@@ -22,40 +22,33 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-
 import be.ceau.kbobce.util.Validator;
 
 /**
  * A unit of establishment of an {@code Enterprise}
  */
-@Entity
-@Access(AccessType.FIELD)
 public class Establishment implements Serializable {
 
 	private static final long serialVersionUID = 1993744126197854948L;
 
-	@EmbeddedId
+	/**
+	 * @return a new {@link Builder} instance for fluent construction of an
+	 *         {@link Establishment}
+	 */
+	public static Builder builder() {
+		return new Builder();
+	}
+	
 	private final EstablishmentNumber establishmentNumber;
 
-	@ElementCollection
 	private final Set<Denomination> denominations;
 
-	@ElementCollection
 	private final Set<Address> addresses;
 
-	@ElementCollection
 	private final Set<Contact> contacts;
 
-	@ElementCollection
 	private final Set<Activity> activities;
 
-	@Embedded
 	private final LocalDate startDate;
 
 	/**
@@ -182,7 +175,7 @@ public class Establishment implements Serializable {
 
 		private static final long serialVersionUID = -7854844426241906998L;
 
-		private final EstablishmentNumber establishmentNumber;
+		private EstablishmentNumber establishmentNumber;
 
 		private Set<Denomination> denominations = new HashSet<>();
 
@@ -194,14 +187,18 @@ public class Establishment implements Serializable {
 
 		private LocalDate startDate;
 
-		public Builder(EstablishmentNumber establishmentNumber) {
-			this.establishmentNumber = establishmentNumber;
+		public Builder() {
 		}
 
+		public Builder withEstablishmentNumber(EstablishmentNumber establishmentNumber) {
+			this.establishmentNumber = establishmentNumber;
+			return this;
+		}
+		
 		public EstablishmentNumber getEstablishmentNumber() {
 			return this.establishmentNumber;
 		}
-		
+
 		public Builder addDenomination(Denomination denomination) {
 			this.denominations.add(denomination);
 			return this;

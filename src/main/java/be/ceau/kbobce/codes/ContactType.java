@@ -17,10 +17,6 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-
 import be.ceau.kbobce.util.Validator;
 
 /**
@@ -31,8 +27,6 @@ import be.ceau.kbobce.util.Validator;
  * <li>web adress
  * </ul>
  */
-@Embeddable
-@Access(AccessType.FIELD)
 public class ContactType extends Code {
 
 	private static final long serialVersionUID = -1683514358728953319L;
