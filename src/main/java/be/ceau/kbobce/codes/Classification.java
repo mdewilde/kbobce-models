@@ -17,15 +17,49 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.entities.Activity;
+import be.ceau.kbobce.entities.Enterprise;
+import be.ceau.kbobce.entities.Establishment;
 
+/**
+ * Denotes whether the given {@link Activity} is a main or ancillary activity of
+ * an {@link Enterprise} or {@link Establishment}.
+ */
 public class Classification extends Code {
 
 	private static final long serialVersionUID = -4099564878525885325L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code Classification}
+	 * code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible
+	 *            {@link Classification}
+	 * @return true if the given argument is a possible code of a
+	 *         {@link Classification}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() == 4;
+	}
+
+	/**
+	 * Construct a new {@link Classification}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or
+	 *            German, not {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public Classification(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(4, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("Classification code must have exactly 4 characters");
+		}
 	}
 
 	@Override
@@ -59,6 +93,5 @@ public class Classification extends Code {
 				.append("]")
 				.toString();
 	}
-	
 
 }

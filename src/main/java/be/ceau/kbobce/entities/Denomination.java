@@ -19,7 +19,7 @@ import java.io.Serializable;
 
 import be.ceau.kbobce.codes.Language;
 import be.ceau.kbobce.codes.TypeOfDenomination;
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.validate.Validator;
 
 /**
  * A name of an {@code Enterprise}.

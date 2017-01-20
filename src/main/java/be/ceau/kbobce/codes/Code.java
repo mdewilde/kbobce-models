@@ -18,7 +18,7 @@ package be.ceau.kbobce.codes;
 import java.io.Serializable;
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.validate.Validator;
 
 /**
  * A code used in the KBO/BCE dataset, along with translations in zero or more

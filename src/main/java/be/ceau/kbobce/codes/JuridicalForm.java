@@ -17,15 +17,47 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.entities.Enterprise;
+import be.ceau.kbobce.validate.Validator;
 
+/**
+ * The juridical form of an {@link Enterprise}.
+ */
 public class JuridicalForm extends Code {
 
 	private static final long serialVersionUID = 8616648784332524403L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code JuridicalForm}
+	 * code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible
+	 *            {@link JuridicalForm}
+	 * @return true if the given argument is a possible code of a
+	 *         {@link JuridicalForm}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() == 3;
+	}
+
+	/**
+	 * Construct a new {@link JuridicalForm}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or German, not
+	 *            {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public JuridicalForm(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(3, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("JuridicalForm code must be exactly 3 characters");
+		}
 	}
 
 	@Override

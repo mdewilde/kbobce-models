@@ -17,7 +17,7 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.validate.Validator;
 
 /**
  * A {@link ContactType} indicates the type of contact data:
@@ -31,9 +31,37 @@ public class ContactType extends Code {
 
 	private static final long serialVersionUID = -1683514358728953319L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code ContactType}
+	 * code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible
+	 *            {@link ContactType}
+	 * @return true if the given argument is a possible code of a
+	 *         {@link ContactType}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() <= 5;
+	}
+
+	/**
+	 * Construct a new {@link ContactType}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or
+	 *            German, not {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public ContactType(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isMaxLength(5, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("ContactType code must have exactly 5 characters");
+		}
 	}
 
 	@Override

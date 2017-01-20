@@ -20,7 +20,7 @@ import java.io.Serializable;
 import be.ceau.kbobce.codes.ActivityGroup;
 import be.ceau.kbobce.codes.Classification;
 import be.ceau.kbobce.codes.Nace;
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.validate.Validator;
 
 /**
  * An activity of an {@code Enterprise}

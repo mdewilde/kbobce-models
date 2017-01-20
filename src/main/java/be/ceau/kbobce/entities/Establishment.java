@@ -22,10 +22,11 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.validate.Validator;
 
 /**
- * A unit of establishment of an {@code Enterprise}
+ * A unit of establishment of an {@code Enterprise}. Create new instances using
+ * by obtaining a {@link Builder} from {@link #builder()}.
  */
 public class Establishment implements Serializable {
 
@@ -38,7 +39,7 @@ public class Establishment implements Serializable {
 	public static Builder builder() {
 		return new Builder();
 	}
-	
+
 	private final EstablishmentNumber establishmentNumber;
 
 	private final Set<Denomination> denominations;
@@ -72,6 +73,7 @@ public class Establishment implements Serializable {
 	 *            a {@code LocalDate}, not {@code null}
 	 * @throws IllegalArgumentException
 	 *             if preconditions not met
+	 * @see #builder()
 	 */
 	public Establishment(EstablishmentNumber establishmentNumber, Collection<Denomination> denominations,
 			Collection<Address> addresses, Collection<Contact> contacts, Collection<Activity> activities,
@@ -86,35 +88,40 @@ public class Establishment implements Serializable {
 	}
 
 	/**
-	 * @return the identifier number of this {@code Establishment}, never {@code null}
+	 * @return the identifier number of this {@code Establishment}, never
+	 *         {@code null}
 	 */
 	public EstablishmentNumber getEstablishmentNumber() {
 		return establishmentNumber;
 	}
 
 	/**
-	 * @return an unmodifiable set of {@code Denomination} instances, never {@code null}
+	 * @return an unmodifiable set of {@code Denomination} instances, never
+	 *         {@code null}
 	 */
 	public Set<Denomination> getDenominations() {
 		return denominations;
 	}
 
 	/**
-	 * @return an unmodifiable set of {@code Address} instances, never {@code null}
+	 * @return an unmodifiable set of {@code Address} instances, never
+	 *         {@code null}
 	 */
 	public Set<Address> getAddresses() {
 		return addresses;
 	}
 
 	/**
-	 * @return an unmodifiable set of {@code Contact} instances, never {@code null}
+	 * @return an unmodifiable set of {@code Contact} instances, never
+	 *         {@code null}
 	 */
 	public Set<Contact> getContacts() {
 		return contacts;
 	}
 
 	/**
-	 * @return an unmodifiable set of {@code Activity} instances, never {@code null}
+	 * @return an unmodifiable set of {@code Activity} instances, never
+	 *         {@code null}
 	 */
 	public Set<Activity> getActivities() {
 		return activities;
@@ -150,7 +157,6 @@ public class Establishment implements Serializable {
 		return startDate.equals(other.startDate);
 	}
 
-
 	@Override
 	public String toString() {
 		return new StringBuilder()
@@ -170,7 +176,9 @@ public class Establishment implements Serializable {
 				.toString();
 	}
 
-
+	/**
+	 * Builder class for new {@link Establishment} instances.
+	 */
 	public static class Builder implements Serializable {
 
 		private static final long serialVersionUID = -7854844426241906998L;
@@ -194,7 +202,7 @@ public class Establishment implements Serializable {
 			this.establishmentNumber = establishmentNumber;
 			return this;
 		}
-		
+
 		public EstablishmentNumber getEstablishmentNumber() {
 			return this.establishmentNumber;
 		}
@@ -203,7 +211,7 @@ public class Establishment implements Serializable {
 			this.denominations.add(denomination);
 			return this;
 		}
-		
+
 		public Builder addDenominations(Collection<Denomination> denominations) {
 			this.denominations.addAll(denominations);
 			return this;
@@ -238,7 +246,7 @@ public class Establishment implements Serializable {
 			this.activities.addAll(activities);
 			return this;
 		}
-	
+
 		public Builder withStartDate(LocalDate startDate) {
 			this.startDate = startDate;
 			return this;

@@ -19,7 +19,7 @@ import java.io.Serializable;
 
 import be.ceau.kbobce.codes.ContactType;
 import be.ceau.kbobce.codes.EntityContact;
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.validate.Validator;
 
 /**
  * Contact data of an {@code Enterprise}

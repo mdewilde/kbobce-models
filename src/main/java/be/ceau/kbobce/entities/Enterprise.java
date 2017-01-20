@@ -30,7 +30,8 @@ import be.ceau.kbobce.codes.Status;
 import be.ceau.kbobce.codes.TypeOfEnterprise;
 
 /**
- * Main model for this library.
+ * Main model for this library. Create new instances using by obtaining a
+ * {@link Builder} from {@link #builder()}.
  */
 public class Enterprise implements Serializable {
 
@@ -96,8 +97,12 @@ public class Enterprise implements Serializable {
 	 * @param activities
 	 *            collection of {@link Activity} instances, can be {@code null}
 	 *            or empty
+	 * @throws IllegalArgumentException
+	 *             if preconditions not met
+	 * @see #builder()
 	 */
-	public Enterprise(EnterpriseNumber enterpriseNumber, Status status, JuridicalSituation juridicalSituation, TypeOfEnterprise typeOfEnterprise, JuridicalForm juridicalForm, LocalDate startDate, Collection<Denomination> denominations, Collection<Establishment> establishments, Collection<Address> addresses, Collection<Contact> contacts, Collection<Activity> activities) {
+	public Enterprise(EnterpriseNumber enterpriseNumber, Status status, JuridicalSituation juridicalSituation, TypeOfEnterprise typeOfEnterprise, JuridicalForm juridicalForm, LocalDate startDate, Collection<Denomination> denominations, Collection<Establishment> establishments, Collection<Address> addresses, Collection<Contact> contacts,
+			Collection<Activity> activities) {
 
 		if (!isValid(enterpriseNumber, status, juridicalSituation, typeOfEnterprise, startDate)) {
 			throw new IllegalArgumentException("at least one required argument is null");
@@ -209,10 +214,14 @@ public class Enterprise implements Serializable {
 
 	@Override
 	public String toString() {
-		return new StringBuilder().append("Enterprise [enterpriseNumber=").append(enterpriseNumber).append(", status=").append(status).append(", juridicalSituation=").append(juridicalSituation).append(", typeOfEnterprise=").append(typeOfEnterprise).append(", juridicalForm=").append(juridicalForm).append(", startDate=").append(startDate).append(", denominations=").append(denominations).append(", establishments=").append(establishments).append(", addresses=").append(addresses).append(", contacts=").append(contacts)
+		return new StringBuilder().append("Enterprise [enterpriseNumber=").append(enterpriseNumber).append(", status=").append(status).append(", juridicalSituation=").append(juridicalSituation).append(", typeOfEnterprise=").append(typeOfEnterprise).append(", juridicalForm=").append(juridicalForm).append(", startDate=").append(startDate)
+				.append(", denominations=").append(denominations).append(", establishments=").append(establishments).append(", addresses=").append(addresses).append(", contacts=").append(contacts)
 				.append(", activities=").append(activities).append("]").toString();
 	}
 
+	/**
+	 * Builder class for new {@link Enterprise} instances.
+	 */
 	public static class Builder implements Serializable {
 
 		private static final long serialVersionUID = 4187227128655182472L;
@@ -326,7 +335,8 @@ public class Enterprise implements Serializable {
 
 		@Override
 		public String toString() {
-			return new StringBuilder().append("Enterprise.Builder [enterpriseNumber=").append(enterpriseNumber).append(", status=").append(status).append(", juridicalSituation=").append(juridicalSituation).append(", typeOfEnterprise=").append(typeOfEnterprise).append(", juridicalForm=").append(juridicalForm).append(", startDate=").append(startDate).append(", denominations=").append(denominations).append(", establishments=").append(establishments).append(", addresses=").append(addresses).append(", contacts=")
+			return new StringBuilder().append("Enterprise.Builder [enterpriseNumber=").append(enterpriseNumber).append(", status=").append(status).append(", juridicalSituation=").append(juridicalSituation).append(", typeOfEnterprise=").append(typeOfEnterprise).append(", juridicalForm=").append(juridicalForm).append(", startDate=").append(startDate)
+					.append(", denominations=").append(denominations).append(", establishments=").append(establishments).append(", addresses=").append(addresses).append(", contacts=")
 					.append(contacts).append(", activities=").append(activities).append("]").toString();
 		}
 

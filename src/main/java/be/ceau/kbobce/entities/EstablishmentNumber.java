@@ -64,21 +64,6 @@ public class EstablishmentNumber implements Serializable {
 		}
 		return null;
 	}
-
-	/**
-	 * Attempts constructing a new {@link EstablishmentNumber} from the given long
-	 * value.
-	 * 
-	 * @param number
-	 *            the long value of this number, as returned from
-	 *            {@link EstablishmentNumber#asLong()}
-	 * @return an {@link EstablishmentNumber} or {@code null}
-	 */
-	public static EstablishmentNumber fromLong(long number) {
-		String t = String.format("%010d", number);
-		t = t.substring(0, 1) + '.' + t.substring(1, 4) + '.' + t.substring(4, 7) + '.' + t.substring(7);
-		return EstablishmentNumber.parse(t);
-	}
 	
 	private final String value;
 
@@ -105,13 +90,6 @@ public class EstablishmentNumber implements Serializable {
 	 */
 	public String getValue() {
 		return value;
-	}
-
-	/**
-	 * @return long value from this {@link EstablishmentNumber}
-	 */
-	public long asLong() {
-		return Long.parseLong(value.substring(0, 1) + value.substring(2, 5) + value.substring(6, 9) + value.substring(10));
 	}
 
 	@Override

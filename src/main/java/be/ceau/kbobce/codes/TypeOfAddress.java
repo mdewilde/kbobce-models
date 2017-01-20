@@ -17,15 +17,50 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.entities.Address;
+import be.ceau.kbobce.entities.Enterprise;
+import be.ceau.kbobce.entities.Establishment;
+import be.ceau.kbobce.validate.Validator;
 
+/**
+ * The nature of the unit at the given {@link Address} of an {@link Enterprise}
+ * or {@link Establishment}.
+ */
 public class TypeOfAddress extends Code {
 
 	private static final long serialVersionUID = -7982426047624797767L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code TypeOfAddress}
+	 * code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible
+	 *            {@link TypeOfAddress}
+	 * @return true if the given argument is a possible code of a
+	 *         {@link TypeOfAddress}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() == 4;
+	}
+
+	/**
+	 * Construct a new {@link TypeOfAddress}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or German, not
+	 *            {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public TypeOfAddress(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(4, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("TypeOfAddress code must be exactly 4 characters");
+		}
 	}
 
 	@Override

@@ -17,15 +17,46 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.entities.Enterprise;
 
+/**
+ * Denotes whether an {@link Enterprise} is a natural person or a legal entity.
+ */
 public class TypeOfEnterprise extends Code {
-	
+
 	private static final long serialVersionUID = -925395702981771050L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code TypeOfEnterprise}
+	 * code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible
+	 *            {@link TypeOfEnterprise}
+	 * @return true if the given argument is a possible code of a
+	 *         {@link TypeOfEnterprise}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() == 1;
+	}
+
+	/**
+	 * Construct a new {@link TypeOfEnterprise}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or German, not
+	 *            {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public TypeOfEnterprise(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(1, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("TypeOfEnterprise code must exactly 1 character");
+		}
 	}
 
 	@Override

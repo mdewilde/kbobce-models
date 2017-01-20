@@ -13,4 +13,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 */
+/**
+ * Codes used in the KBO/BCE dataset
+ */
 package be.ceau.kbobce.codes;

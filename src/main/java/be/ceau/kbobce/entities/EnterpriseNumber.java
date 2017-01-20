@@ -83,24 +83,6 @@ public class EnterpriseNumber implements Serializable {
 		return PATTERN.matcher(enterpriseNumber).matches();
 	}
 
-	/**
-	 * Attempts constructing a new {@link EnterpriseNumber} from the given long
-	 * value.
-	 * 
-	 * @param number
-	 *            the long value of this number, as returned from
-	 *            {@link EnterpriseNumber#asLong()}
-	 * @return an {@link EnterpriseNumber} or {@code null}
-	 */
-	public static EnterpriseNumber fromLong(long number) {
-		if (number > 999999999l) {
-			return null;
-		}
-		String raw = String.format("%010d", number);
-		raw = raw.substring(0, 4) + '.' + raw.substring(4, 7) + '.' + raw.substring(7);
-		return EnterpriseNumber.parse(raw);
-	}
-
 	private final String value;
 
 	/**
@@ -127,13 +109,6 @@ public class EnterpriseNumber implements Serializable {
 		return value;
 	}
 
-	/**
-	 * @return long value from this {@link EnterpriseNumber}
-	 */
-	public long asLong() {
-		return Long.parseLong(value.substring(1, 4) + value.substring(5, 8) + value.substring(9));
-	}
-	
 	@Override
 	public int hashCode() {
 		return value.hashCode();

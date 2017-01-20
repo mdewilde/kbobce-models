@@ -17,28 +17,61 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
+import be.ceau.kbobce.entities.Enterprise;
+import be.ceau.kbobce.entities.Establishment;
+
 /**
- * <strong>Nomenclature génerale des Activités économiques dans les Communautées Européennes</strong>
- * <a href="http://statbel.fgov.be/nl/statistieken/gegevensinzameling/nomenclaturen/nacebel/">source</a>
+ * Standardized code for the activity type of an {@link Enterprise} or
+ * {@link Establishment}. {@code Nace} is an acronym for <strong>Nomenclature
+ * génerale des Activités économiques dans les Communautées
+ * Européennes</strong>.
+ * 
+ * @see <a href=
+ *      "http://statbel.fgov.be/nl/statistieken/gegevensinzameling/nomenclaturen/nacebel/">statbel</a>
  */
 public class Nace extends Code {
 
 	private static final long serialVersionUID = -5512251988222060116L;
 
 	private final int year;
-	
+
+	/**
+	 * Validate the given int as a possible {@code Nace} version year.
+	 * 
+	 * @param year
+	 *            the {@link Nace} version year to validate
+	 * @return true if the given argument is a possible year of a {@link Nace}
+	 */
+	public static boolean isValid(int year) {
+		return year != 2003 && year != 2008;
+	}
+
+	/**
+	 * Construct a new {@link Nace}.
+	 * 
+	 * @param year
+	 *            a {@link Nace} version year
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or German, not
+	 *            {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public Nace(int year, String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		if (year != 2003 && year != 2008) {
+		if (!isValid(year)) {
 			throw new IllegalArgumentException("Nace year must be 2003 or 2008");
 		}
 		this.year = year;
 	}
-	
+
 	public int getYear() {
 		return year;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,5 +113,5 @@ public class Nace extends Code {
 				.append("]")
 				.toString();
 	}
-	
+
 }

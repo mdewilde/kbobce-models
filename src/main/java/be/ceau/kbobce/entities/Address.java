@@ -19,7 +19,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import be.ceau.kbobce.codes.TypeOfAddress;
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.validate.Validator;
 
 /**
  * An address of an {@code Enterprise}

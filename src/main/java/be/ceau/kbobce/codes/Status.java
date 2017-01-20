@@ -17,15 +17,43 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.entities.Enterprise;
 
+/**
+ * The status of an {@link Enterprise}. The status usually defaults to active.
+ */
 public class Status extends Code {
 
 	private static final long serialVersionUID = -9072577228229060756L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code Status} code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible {@code Status}
+	 * @return true if the given argument is a possible code of a {@link Status}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() == 2;
+	}
+
+	/**
+	 * Construct a new {@link Status}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or
+	 *            not {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public Status(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(2, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("Status code must have exactly 2 characters");
+		}
 	}
 
 	@Override

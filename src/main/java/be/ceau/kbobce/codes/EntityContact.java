@@ -17,19 +17,49 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.entities.Contact;
+import be.ceau.kbobce.entities.Enterprise;
+import be.ceau.kbobce.entities.Establishment;
 
 /**
- * Geeft aan voor welk type entiteit dit een contactgegeven is: onderneming,
- * bijhuis of vestigingseenheid.
+ * Denotes the nature of the {@link Contact} for an {@link Enterprise} or
+ * {@link Establishment}.
  */
 public class EntityContact extends Code {
 
 	private static final long serialVersionUID = -3897643256867202036L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code EntityContact}
+	 * code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible
+	 *            {@link EntityContact}
+	 * @return true if the given argument is a possible code of a
+	 *         {@link EntityContact}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() <= 3;
+	}
+
+	/**
+	 * Construct a new {@link EntityContact}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or German, not
+	 *            {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public EntityContact(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isMaxLength(3, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("EntityContact code must be 3 or less characters");
+		}
 	}
 
 	@Override

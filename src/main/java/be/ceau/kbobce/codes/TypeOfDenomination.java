@@ -17,15 +17,49 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.util.Validator;
+import be.ceau.kbobce.entities.Denomination;
+import be.ceau.kbobce.entities.Enterprise;
+import be.ceau.kbobce.entities.Establishment;
 
+/**
+ * The nature of the {@link Denomination} of an {@link Enterprise} or
+ * {@link Establishment}.
+ */
 public class TypeOfDenomination extends Code {
 
 	private static final long serialVersionUID = 1842800188971557571L;
 
+	/**
+	 * Validate the given {@link String} as a possible {@code TypeOfDenomination}
+	 * code.
+	 * 
+	 * @param code
+	 *            a {@code String} to validate as a possible
+	 *            {@link TypeOfDenomination}
+	 * @return true if the given argument is a possible code of a
+	 *         {@link TypeOfDenomination}
+	 */
+	public static boolean isValid(String code) {
+		return code != null && code.length() == 3;
+	}
+
+	/**
+	 * Construct a new {@link TypeOfDenomination}.
+	 * 
+	 * @param code
+	 *            a {@link String}, not {@code blank}
+	 * @param descriptions
+	 *            descriptions for the code in Dutch, French and/or German, not
+	 *            {@code null}
+	 * @throws IllegalArgumentException
+	 *             if argument not valid. Avoid this exception by passing only
+	 *             input validated with static {@link #isValid} method
+	 */
 	public TypeOfDenomination(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		Validator.isLength(3, code);
+		if (!isValid(code)) {
+			throw new IllegalArgumentException("TypeOfDenomination code must be exactly 3 characters");
+		}
 	}
 
 	@Override
