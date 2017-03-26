@@ -40,10 +40,10 @@ public class Nace extends Code {
 	 * 
 	 * @param year
 	 *            the {@link Nace} version year to validate
-	 * @return true if the given argument is a possible year of a {@link Nace}
+	 * @return {@code true} if the given argument is a possible year of a {@link Nace}
 	 */
 	public static boolean isValid(int year) {
-		return year != 2003 && year != 2008;
+		return year == 2003 || year == 2008;
 	}
 
 	/**

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>be.ceau</groupId>
 	<artifactId>kbobce-models</artifactId>
-	<version>0.6.0</version>
+	<version>0.6.1</version>
 	<name>KBO/BCE Models</name>
 	<description>Model library for adding data from the Belgian Kruispuntbank van ondernemingen (KBO) / Banque-Carrefour des Entreprises (BCE).</description>
 	<url>https://www.ceau.be/kbobce</url>
