@@ -1,5 +1,8 @@
 # KboBce
 
+[![Maven Central badge](https://maven-badges.herokuapp.com/maven-central/be.ceau/kbobce-models/badge.svg)](https://mvnrepository.com/artifact/be.ceau/kbobce-models)  [![Javadocs](https://javadoc.io/badge/be.ceau/kbobce-models.svg)](https://javadoc.io/doc/be.ceau/kbobce-models)  [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
 KboBce is a model library for representing data from the Belgian _Kruispuntbank van ondernemingen_ or _KBO_ (aka _Banque-Carrefour des Entreprises_ or _BCE_) in a Java application. 
 
 The _KBO_ is also known as the _CBE_, short for _Crossroads Enterprise Database_.
@@ -17,17 +20,20 @@ To download the open data for this library, go to [Kruispuntbank](https://kbopub
 ```Java
 ```
 
+### Requirements
+This library requires Java 8 or higher.
+
 ### Maven Central
 Include this project directly from Maven Central
 ```XML
-<groupId>be.ceau</groupId>
-<artifactId>kbobce-models</artifactId>
-<version>${kbobce-models-version}</version>
+<dependency>
+	<groupId>be.ceau</groupId>
+	<artifactId>kbobce-models</artifactId>
+	<version>${kbobce-models-version}</version>
+</dependency>
 ```
-![Current version](https://maven-badges.herokuapp.com/maven-central/be.ceau/kbobce-models/badge.svg)
 
-###	Source code
-Source code is available on [GitHub](https://github.com/mdewilde/kbobce-models).
+![Current version](https://maven-badges.herokuapp.com/maven-central/be.ceau/kbobce-models/badge.svg)
 
 ### GnuPG public key
 Verify signature files with my [GnuPG public key](https://www.ceau.be/pubkey.gpg).
