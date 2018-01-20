@@ -14,12 +14,6 @@ The _KBO_ is also known as the _ZDU_, short for _Zentrale Datenbank der Unterneh
 
 To download the open data for this library, go to [Kruispuntbank](https://kbopub.economie.fgov.be/kbo-open-data/login) and download a full open data file.
 
-### Usage example
-
-
-```Java
-```
-
 ### Requirements
 This library requires Java 8 or higher.
 
