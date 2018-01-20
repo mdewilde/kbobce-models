@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>be.ceau</groupId>
 	<artifactId>kbobce-models</artifactId>
-	<version>0.6.1</version>
+	<version>0.7.1</version>
 	<name>KBO/BCE Models</name>
-	<description>Model library for adding data from the Belgian Kruispuntbank van ondernemingen (KBO) / Banque-Carrefour des Entreprises (BCE).</description>
+	<description>Model library for the open data from the Belgian Kruispuntbank van ondernemingen (KBO) aka Banque-Carrefour des Entreprises (BCE)</description>
 	<url>https://www.ceau.be/kbobce</url>
 	<developers>
 		<developer>
@@ -43,6 +43,14 @@
 	<prerequisites>
 		<maven>3.0</maven>
 	</prerequisites>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -74,7 +82,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.4</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -126,7 +134,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.6</version>
+				<version>3.7</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -146,7 +154,7 @@
 				<configuration>
 					<skip>false</skip>
 				</configuration>
-				<version>3.0.1</version>
+				<version>3.1.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

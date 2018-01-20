@@ -1,5 +1,5 @@
 /*
-	Copyright 2017 Marceau Dewilde <m@ceau.be>
+	Copyright 2018 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import java.util.Map;
 import be.ceau.kbobce.entities.Address;
 import be.ceau.kbobce.entities.Enterprise;
 import be.ceau.kbobce.entities.Establishment;
-import be.ceau.kbobce.validate.Validator;
 
 /**
  * The nature of the unit at the given {@link Address} of an {@link Enterprise}

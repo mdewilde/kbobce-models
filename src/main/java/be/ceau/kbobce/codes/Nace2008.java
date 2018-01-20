@@ -17,31 +17,24 @@ package be.ceau.kbobce.codes;
 
 import java.util.Map;
 
-import be.ceau.kbobce.entities.Denomination;
+import be.ceau.kbobce.entities.Enterprise;
+import be.ceau.kbobce.entities.Establishment;
 
 /**
- * The language of a {@link Denomination}.
+ * Standardized code for the activity type of an {@link Enterprise} or
+ * {@link Establishment}. {@code Nace} is an acronym for <strong>Nomenclature
+ * génerale des Activités économiques dans les Communautées
+ * Européennes</strong>.
+ * 
+ * @see <a href=
+ *      "http://statbel.fgov.be/nl/statistieken/gegevensinzameling/nomenclaturen/nacebel/">statbel</a>
  */
-public class Language extends Code {
+public class Nace2008 extends Nace {
 
-	private static final long serialVersionUID = 4031546705278349054L;
-
-	/**
-	 * Validate the given {@link String} as a possible {@code Language}
-	 * code.
-	 * 
-	 * @param code
-	 *            a {@code String} to validate as a possible
-	 *            {@link Language}
-	 * @return true if the given argument is a possible code of a
-	 *         {@link Language}
-	 */
-	public static boolean isValid(String code) {
-		return code != null && code.length() == 1;
-	}
+	private static final long serialVersionUID = 1511034246781L;
 
 	/**
-	 * Construct a new {@link Language}.
+	 * Construct a new {@link Nace2008}.
 	 * 
 	 * @param code
 	 *            a {@link String}, not {@code blank}
@@ -49,19 +42,23 @@ public class Language extends Code {
 	 *            descriptions for the code in Dutch, French and/or German, not
 	 *            {@code null}
 	 * @throws IllegalArgumentException
-	 *             if argument not valid. Avoid this exception by passing only
-	 *             input validated with static {@link #isValid} method
+	 *             if argument not valid
 	 */
-	public Language(String code, Map<String, String> descriptions) {
+	public Nace2008(String code, Map<String, String> descriptions) {
 		super(code, descriptions);
-		if (!isValid(code)) {
-			throw new IllegalArgumentException("Language code must be exactly 1 character");
-		}
+	}
+
+	@Override
+	public int getYear() {
+		return 2003;
 	}
 
 	@Override
 	public int hashCode() {
-		return code.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + code.hashCode();
+		return result;
 	}
 
 	@Override
@@ -72,14 +69,16 @@ public class Language extends Code {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Language other = (Language) obj;
-		return !code.equals(other.code);
+		Nace2008 other = (Nace2008) obj;
+		if (code != other.code)
+			return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
 		return new StringBuilder()
-				.append("Language [code=")
+				.append("Nace2008 [code=")
 				.append(code)
 				.append(", nl=")
 				.append(nl)

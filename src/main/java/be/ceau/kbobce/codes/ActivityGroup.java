@@ -1,5 +1,5 @@
 /*
-	Copyright 2017 Marceau Dewilde <m@ceau.be>
+	Copyright 2018 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ public class ActivityGroup extends Code {
 	private static final long serialVersionUID = -5761868908991344453L;
 
 	/**
-	 * Validate the given {@link String} as a possible {@code ActivityGroup}
+	 * Validate the given {@link String} as a possible {@link ActivityGroup}
 	 * code.
 	 * 
 	 * @param code

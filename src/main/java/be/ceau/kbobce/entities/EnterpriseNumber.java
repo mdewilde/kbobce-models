@@ -1,5 +1,5 @@
 /*
-	Copyright 2017 Marceau Dewilde <m@ceau.be>
+	Copyright 2018 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -70,19 +70,34 @@ public class EnterpriseNumber implements Serializable {
 	/**
 	 * Validate the given {@link String} as a possible {@code EnterpriseNumber}
 	 * 
-	 * @param enterpriseNumber
+	 * @param candidate
 	 *            a {@code String} to validate as a possible
 	 *            {@code EnterpriseNumber}
 	 * @return true if the given argument is a valid, correctly formatted
 	 *         enterprise number
 	 */
-	public static boolean isValid(String enterpriseNumber) {
-		if (enterpriseNumber == null) {
+	public static boolean isValid(String candidate) {
+		if (candidate == null) {
 			return false;
 		}
-		return PATTERN.matcher(enterpriseNumber).matches();
-	}
+		return matchesPattern(candidate) && passesChecksum(candidate);
+ 	}
 
+	private static boolean matchesPattern(String candidate) {
+		return PATTERN.matcher(candidate).matches();
+	}
+	
+	private static boolean passesChecksum(String candidate) {
+		try {
+			int part = Integer.parseInt(candidate.replace(".", "").substring(0, 8));
+			int check = Integer.parseInt(candidate.substring(10));
+			int valid = 97 - (part - ((part / 97) * 97));
+			return check == valid;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+	
 	private final String value;
 
 	/**
