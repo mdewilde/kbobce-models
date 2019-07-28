@@ -1,5 +1,5 @@
 /*
-	Copyright 2018 Marceau Dewilde <m@ceau.be>
+	Copyright 2019 Marceau Dewilde <m@ceau.be>
 	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
@@ -27,8 +27,7 @@ public class TypeOfEnterprise extends Code {
 	private static final long serialVersionUID = -925395702981771050L;
 
 	/**
-	 * Validate the given {@link String} as a possible {@code TypeOfEnterprise}
-	 * code.
+	 * Validate the given {@link String} as a possible {@code TypeOfEnterprise} code.
 	 * 
 	 * @param code
 	 *            a {@code String} to validate as a possible
